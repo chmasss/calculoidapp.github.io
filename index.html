@@ -1,0 +1,25 @@
+<!doctype html><!--[if lt IE 7]>      <html xmlns:ng="http://angularjs.org" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>         <html xmlns:ng="http://angularjs.org" class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>         <html xmlns:ng="http://angularjs.org" class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html xmlns:ng="http://angularjs.org" class="no-js"><!--<![endif]--><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Calculoid</title><meta name="description" content="Create / copy, use and share your calculator."><meta name="viewport" content="width=device-width"><link rel="stylesheet" href="styles/ac5963db.combined.min.css"><link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"><!--[if lte IE 8]>
+            <script>
+                document.createElement('ng-include');
+                document.createElement('ng-if');
+                document.createElement('ng-view');
+
+                // Optionally these for CSS
+                document.createElement('ng:include');
+                document.createElement('ng:if');
+                document.createElement('ng:view');
+            </script>
+        <![endif]--><body id="ng-app" ng-app="calculoid"><!--[if lt IE 7]>
+            <script src="bower_components/json3/lib/json3.lib.js" ></script>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]--><div class="container view-container"><nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation" ng-controller="NavigationCtrl"><div class="container"><!-- Brand and toggle get grouped for better mobile display --><div class="navbar-header"><button type="button" class="navbar-toggle" ng-click="navIsCollapsed = !navIsCollapsed"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="#"><i class="fa fa-tachometer"></i> Calculoid <span class="label label-warning">Beta</span> <small>Count on it...</small></a></div><!-- Collect the nav links, forms, and other content for toggling --><div class="collapse navbar-collapse navbar-right" collapse="navIsCollapsed"><ul class="nav navbar-nav" ng-include="'views/user-area-'+user.logged+'.html'"></ul><ul class="nav navbar-nav"><li><a href="#/calculators/">Calculators</a></li><li><a href="#/features">Features</a></li><li><a href="#/calculator/66">Pricing</a></li><li><a href="#/about">About</a></li></ul></div><!-- /.navbar-collapse --></div><!-- /.container-fluid --></nav><div ng-view="" class="view-frame"></div></div><div class="container-fluid footer"><p><a href="http://calculoid.com">&copy; Calculoid.com</a> | <a href="http://easyredmine.com">project management by Easy Redmine</a> | <a href="http://easy.cz">webdesign by easy.cz</a></p></div><!--[if lt IE 9]>
+            <script src="bower_components/es5-shim/es5-shim.js"></script>
+            <script src="bower_components/json3/lib/json3.min.js"></script>
+        <![endif]--><script src="scripts/ae8edfb6.combined.min.js"></script><!--<div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=207068759372502";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>-->
