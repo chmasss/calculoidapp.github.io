@@ -30,13 +30,13 @@
   -o-transition: width 350ms;
   transition: width 350ms;
 
-  background: #29d;
+  background: #A3D4FF;
   position: fixed;
   z-index: 2000;
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 3px;
 }
 
 /* Fancy blur effect */

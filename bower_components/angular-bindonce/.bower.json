@@ -32,5 +32,6 @@
   },
   "_source": "git://github.com/Pasvaz/bindonce.git",
   "_target": "~0.3.1",
-  "_originalSource": "angular-bindonce"
+  "_originalSource": "angular-bindonce",
+  "_direct": true
 }

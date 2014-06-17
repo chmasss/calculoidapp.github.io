@@ -33,5 +33,6 @@
   },
   "_source": "git://github.com/bouil/angular-google-chart.git",
   "_target": "~0.0.9",
-  "_originalSource": "angular-google-chart"
+  "_originalSource": "angular-google-chart",
+  "_direct": true
 }

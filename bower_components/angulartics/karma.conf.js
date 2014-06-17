@@ -9,8 +9,6 @@ module.exports = function(config) {
 
     files: [
       'components/angular/angular.js',
-      'components/angular-route/angular-route.js',
-      'components/angular-ui-router/release/angular-ui-router.js',
       'components/angular-mocks/angular-mocks.js',
       'src/**/*.js',
       'test/**/*.js'

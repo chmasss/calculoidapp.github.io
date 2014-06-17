@@ -1,5 +1,5 @@
 /**
- * @license Angulartics v0.15.18
+ * @license Angulartics v0.15.17
  * (c) 2013 Luis Farzati http://luisfarzati.github.io/angulartics
  * License: MIT
  */
@@ -77,7 +77,7 @@ angular.module('angulartics', [])
   };
 })
 
-.run(['$rootScope', '$location', '$analytics', '$injector', function ($rootScope, $location, $analytics, $injector) {
+.run(['$rootScope', '$location', '$analytics', function ($rootScope, $location, $analytics) {
   if ($analytics.settings.pageTracking.autoTrackFirstPage) {
     if ($analytics.settings.trackRelativePath) {
         $analytics.pageTrack($location.url());
@@ -86,19 +86,11 @@ angular.module('angulartics', [])
     }
   }
   if ($analytics.settings.pageTracking.autoTrackVirtualPages) {
-    if ($injector.has('$route')) {
-      $rootScope.$on('$routeChangeSuccess', function (event, current) {
-        if (current && (current.$$route||current).redirectTo) return;
-        var url = $analytics.settings.pageTracking.basePath + $location.url();
-        $analytics.pageTrack(url);
-      });
-    }
-    if ($injector.has('$state')) {
-      $rootScope.$on('$stateChangeSuccess', function (event, current) {
-        var url = $analytics.settings.pageTracking.basePath + $location.url();
-        $analytics.pageTrack(url);
-      });
-    }
+    $rootScope.$on('$locationChangeSuccess', function (event, current) {
+      if (current && (current.$$route||current).redirectTo) return;
+      var url = $analytics.settings.pageTracking.basePath + $location.url();
+      $analytics.pageTrack(url);
+    });
   }
 }])
 
