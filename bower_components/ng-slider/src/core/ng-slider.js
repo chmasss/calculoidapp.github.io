@@ -9,7 +9,7 @@
         return {
           restrict : 'AE',
           require: '?ngModel',
-          scope: { options:'=' },
+          scope: { options:'=', ngDisabled: '='},
           priority: 1,
           link : function(scope, element, attrs, ngModel) {
           
@@ -58,6 +58,7 @@
               scale: scope.options.scale,
               vertical: scope.options.vertical,
               css: scope.options.css,
+              realtime: scope.options.realtime,
               cb: forceApply
             };
             
@@ -75,6 +76,10 @@
             var scaleDiv = scope.tmplElt.find('div')[7];
             angular.element(scaleDiv).html(scope.slider.generateScale());
             scope.slider.drawScale(scaleDiv);
+
+            if (scope.ngDisabled) {
+              disabler(true);
+            }
 
             initialized = true;            
           };
@@ -127,20 +132,24 @@
             timeout(function(){
               init();
             });            
-          });
+          }, true);
 
           // disabling
-          attrs.$observe(attrs.ngDisabled,  function ngHideWatchAction(value) {
+          var disabler = function(value) {
             scope.disabled = value;
             if (scope.slider) {
               scope.tmplElt.toggleClass('disabled');              
               scope.slider.disable(value);
-            }            
+            }
+          };                   
+
+          attrs.$observe(attrs.ngDisabled,  function ngHideWatchAction(value) {
+            disabler(value);
           });
 
           var slidering = function( inputElement, element, settings) {
             return new Slider( inputElement, element, settings );            
-          };
+          };         
         }
       };
     }])

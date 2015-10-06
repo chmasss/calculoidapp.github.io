@@ -20,12 +20,13 @@
       if(this.settings.onstatechange && angular.isFunction(this.settings.onstatechange))
         this.onstatechange = this.settings.onstatechange;
 
+      this.css = sliderConstants.SLIDER.css;
       this.is = {init: false};
       this.o = {};
       this.initValue = {};
 
       this.create(templateNode);
-
+      
       return this;
     };
 
@@ -103,12 +104,19 @@
           value1 = value > self.settings.to ? self.settings.to : value;
 
           self.o.pointers[key].set( value1, true );
+          // reinit position d
+          var offset = utils.offset(self.o.pointers[key].ptr);
 
-          if (key === 0) {
-            self.domNode.bind('mousedown', self.clickHandler.apply(self));
-          }
-        }
+          self.o.pointers[key].d = {
+            left: offset.left,
+            top: offset.top,
+            width: self.o.pointers[key].ptr.clientWidth,
+            height: self.o.pointers[key].ptr.clientHeight
+          };          
+        }        
       });
+
+      self.domNode.bind('mousedown', self.clickHandler.apply(self));
 
       this.o.value = angular.element(this.domNode.find("i")[2]);      
       this.is.init = true;
@@ -135,30 +143,40 @@
 
     Slider.prototype.clickHandler = function() {
       var self = this;
+      var vertical = this.settings.vertical;
       return function(evt) {
         if (self.disabled)
-          return;
-        var className = evt.target.className;
-        var targetIdx = 0;
-
-        if (className.indexOf('jslider-pointer-to') > 0) {
-          targetIdx = 1;
-        }
+          return;        
+        var targetIdx = 0;        
 
         var _off = utils.offset(self.domNode);
 
-        var offset = {
-          left: _off.left,
-          top: _off.top,
-          width: self.domNode[0].clientWidth,
-          height: self.domNode[0].clientHeight
-        };              
+        var firstPtr = self.o.pointers[0];
+        var secondPtr = self.o.pointers[1] ? self.o.pointers[1] : null;        
+        var evtPosition = evt.originalEvent ? evt.originalEvent: evt;
+        var mouse = vertical ? evtPosition.pageY : evtPosition.pageX;
+        console.log(mouse);
 
+        var offset = { left: _off.left, top: _off.top, width: self.domNode[0].clientWidth, height: self.domNode[0].clientHeight };              
         var targetPtr = self.o.pointers[targetIdx];
+        var css = vertical ? 'top' : 'left';
+        if (secondPtr) {
+          var middleGap = (secondPtr.d[css] - firstPtr.d[css]) / 2;
+          var mousePosBetween = mouse - firstPtr.d[css];        
+          if (mousePosBetween > middleGap)
+            targetPtr = secondPtr;
+        }
         targetPtr._parent = {offset: offset, width: offset.width, height: offset.height};
-        targetPtr._mousemove(evt);
-        targetPtr.onmouseup();
-      
+        var coords = firstPtr._getPageCoords( evt );          
+        targetPtr.cx = coords.x - targetPtr.d.left;
+        targetPtr.cy = coords.y - targetPtr.d.top;      
+        targetPtr.onmousemove( evt, coords.x, coords.y);
+        targetPtr.onmouseup();        
+        angular.extend(targetPtr.d, {
+           left: coords.x,
+           top: coords.y          
+        });
+        self.redraw(targetPtr);
         return false;
       };
     };
@@ -330,48 +348,38 @@
         border: (prc * (!self.settings.vertical ? this.sizes.domWidth: this.sizes.domHeight)) / 100
       };
 
-      var another_label = null;
-      var another = null;
+      var anotherIdx = pointer.uid === 0 ? 1:0;
+      var anotherLabel;
+      var anotherPtr;          
 
       if (!this.settings.single && !this.settings.vertical){
-        // glue if near;
-        another = this.o.pointers[1-pointer.uid];
-        another_label = this.o.labels[another.uid];
+        // glue if near;        
+        anotherLabel = this.o.labels[anotherIdx];
+        anotherPtr = this.o.pointers[anotherIdx];          
+        var label1 = this.o.labels[0];
+        var label2 = this.o.labels[1];
+        var ptr1 = this.o.pointers[0];
+        var ptr2 = this.o.pointers[1];
 
-        switch(pointer.uid){
-          case 0:
-          if (sizes.border+sizes.label / 2 > another_label.o[0].offsetLeft-this.sizes.domOffset.left){
-            another_label.o.css({ visibility: "hidden" });
-            another_label.value.html(this.nice(another.value.origin));
-            label.o.css({ visibility: "visible" });
-            prc = (another.value.prc - prc) / 2 + prc;
-
-            if(another.value.prc != pointer.value.prc){
-              label.value.html(this.nice(pointer.value.origin) + "&nbsp;&ndash;&nbsp;" + this.nice(another.value.origin));
-              sizes.label = label.o[0].offsetWidth;
-              sizes.border = (prc * domSize) / 100;
-            }
-          } else {
-            another_label.o.css({ visibility: "visible" });
+        label1.o.css(this.css.visible);
+        label2.o.css(this.css.visible);
+        
+        var gapBetweenLabel = ptr2.ptr[0].offsetLeft - ptr1.ptr[0].offsetLeft;                
+        
+        if (gapBetweenLabel + 10 < label1.o[0].offsetWidth+label2.o[0].offsetWidth) {
+          anotherLabel.o.css(this.css.hidden);
+          anotherLabel.value.html(this.nice(anotherPtr.value.origin));
+          prc = (anotherPtr.value.prc - prc) / 2 + prc;
+          if(anotherPtr.value.prc != pointer.value.prc){
+            label.value.html(this.nice(this.o.pointers[0].value.origin) + "&nbsp;&ndash;&nbsp;" + this.nice(this.o.pointers[1].value.origin));
+            sizes.label = label.o[0].offsetWidth;
+            sizes.border = (prc * domSize) / 100;
           }
-          break;
-          case 1:
-          if (sizes.border - sizes.label / 2 < another_label.o[0].offsetLeft - this.sizes.domOffset.left + another_label.o[0].offsetWidth){
-            another_label.o.css({ visibility: "hidden" });
-            another_label.value.html( this.nice(another.value.origin) );
-            label.o.css({ visibility: "visible" });
-            prc = ( prc - another.value.prc ) / 2 + another.value.prc;
-
-            if( another.value.prc != pointer.value.prc ){
-              label.value.html( this.nice(another.value.origin) + "&nbsp;&ndash;&nbsp;" + this.nice(pointer.value.origin) );
-              sizes.label = label.o[0].offsetWidth;
-              sizes.border = ( prc * domSize ) / 100;
-            }
-          } else {
-            another_label.o.css({ visibility: "visible" });
-          }
-          break;
         }
+        else {          
+          anotherLabel.value.html(this.nice(anotherPtr.value.origin));
+          anotherLabel.o.css(this.css.visible);
+        }              
       }
 
       sizes = setPosition(label, sizes, prc);
@@ -379,15 +387,15 @@
       var domSize = !self.settings.vertical ? self.sizes.domWidth : self.sizes.domHeight;
 
       /* draw second label */
-      if(another_label){
+      if(anotherLabel){
         var sizes2 = {
-          label: !self.settings.vertical ? another_label.o[0].offsetWidth: another_label.o[0].offsetHeight,
+          label: !self.settings.vertical ? anotherLabel.o[0].offsetWidth: anotherLabel.o[0].offsetHeight,
           right: false,
-          border: (another.value.prc * this.sizes.domWidth) / 100
+          border: (anotherPtr.value.prc * this.sizes.domWidth) / 100
         };
-        sizes = setPosition(another_label, sizes2, another.value.prc);
+        sizes = setPosition(anotherLabel, sizes2, anotherPtr.value.prc);
       }
-
+      
       this.redrawLimits();
     };
 
