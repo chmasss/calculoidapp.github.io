@@ -1,11 +1,11 @@
-ng-slider [![NPM version](https://badge.fury.io/js/ng-slider.png)](http://badge.fury.io/js/ng-slider) [![Build Status](https://travis-ci.org/darul75/ng-slider.png?branch=master)](https://travis-ci.org/darul75/ng-slider) [![Total views](https://sourcegraph.com/api/repos/github.com/darul75/ng-slider/counters/views.png)](https://sourcegraph.com/github.com/darul75/ng-slider)
+angular-awesome-slider [![NPM version](https://badge.fury.io/js/angular-awesome-slider.png)](http://badge.fury.io/js/angular-awesome-slider) [![Build Status](https://travis-ci.org/darul75/angular-awesome-slider.png?branch=master)](https://travis-ci.org/darul75/angular-awesome-slider) [![Join the chat at https://gitter.im/darul75/angular-awesome-slider](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/darul75/angular-awesome-slider?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 =====================
 
 Angular directive slider control.
 
 **No JQUERY dependency needed anymore**
 
-Welcome to a fork from awesome job of Egor Khmelev https://github.com/egorkhmelev/jslider
+**Skins available**
 
 Why
 -------------
@@ -17,11 +17,13 @@ Source files were divided in several files, and not angular integrated.
 Screenshot
 -------------
 
-![angular slider demo](http://darul75.github.io/ng-slider/images/slider1.png "angular slider demo screenshot")
+![angular slider demo](http://darul75.github.io/angular-awesome-slider/images/slider3.png "angular slider demo screenshot")
 
 Demo
 -------------
-http://darul75.github.io/ng-slider/
+http://darul75.github.io/angular-awesome-slider/
+
+http://jsfiddle.net/darul75/g9e9n8xc/
 
 How to use it
 -------------
@@ -35,11 +37,11 @@ You should already have script required for Angular.
 to the list above, you should add:
 
 ```html
-<link rel="stylesheet" type="text/css" href="ng-slider.min.css">
+<link rel="stylesheet" type="text/css" href="angular-awesome-slider.min.css">
 ```
 
 ```html
-<script type="text/javascript" src="ng-slider.min.js"></script>
+<script type="text/javascript" src="angular-awesome-slider.min.js"></script>
 ```
 in case you want to use your own template, omit the last line and instead add some template code
 to your project:
@@ -49,10 +51,10 @@ to your project:
 </script>
 ```
 
-Then, inject `ngSlider` in your application module:
+Then, inject `angularAwesomeSlider` in your application module:
 
 ```javascript
-angular.module('myApp', ['ngSlider']);
+angular.module('myApp', ['angularAwesomeSlider']);
 ```
 
 and then just add an `input` with `slider` directive name attribute, `value` and `options` scope variable attribute.
@@ -82,10 +84,17 @@ Options for your slider in json format {from:.....}
 * `round`: how many numbers allowed after comma
 * `smooth`: true/false; false snaps the button to value
 * `vertical`: true/false; vertical slider, default false
-* `css`: hash object 
+* `skin`: empty or 'blue' 'plastic' 'round'
+* `css`: hash object, do not mix with 'skin' !
+* `className`: custom class added to root slider DOM
 * `realtime`: triggers changes and model update on every moves
+* `threshold`: minimum distance allowed between 2 pointers, default both pointers overlap
+* `limits`: true/false; toggles bounds labels visibility
+* `modelLabels`: custom model for pointers labels based on pointer value
+* `watchOptions`: default is 'true', watch this options changes by [equals](https://docs.angularjs.org/api/ng/function/angular.equals)
+* `heterogeneity`: array [percentage of point on slider]/[value in that point]
 
-![angular slider css](http://darul75.github.io/ng-slider/images/slider2.png "angular slider css explained")
+![angular slider css](http://darul75.github.io/angular-awesome-slider/images/slider2.png "angular slider css explained")
 ```
 css: {
 	background: {"background-color": "silver"},
@@ -98,24 +107,81 @@ css: {
 ````
 * `callback` : function triggering current value, can be useful
 
+```javascript
+// example
+callback: function(value, released) {
+	// useful when combined with 'realtime' option
+	// released it triggered when mouse up
+	console.log(value + " " + released);
+}
+```
+
+* `scale` : model for slide scale
+
+```javascript
+// divide slider into parts
+scale: [0, '|', 10, '|', 20, '|' , 30, '|', 40]
+
+// or with some custom labels
+scale: [{val:10, label:'low'}, {val:25, label:'middle'}, {val:30, label:'high'}]
+```
+
+* `modelLabels` : model for pointers labels by object or function
+
+```javascript
+// overrides default value label displayed combined with 'dimension' by an arbitrary label model
+modelLabels: {1: 'top', 2: 'middle', 3: 'bottom'};
+
+// or dynamicaly based
+modelLabels: function(value) {
+	return 'my value is' + value; // momentjs external library call...
+}
+```
+
+* `heterogeneity` : repartition of possible values
+```javascript
+// example here, first value is percentage of slider length, second is value
+heterogeneity: ['50/100', '75/250'] // 50% value is 100, 75% value must be 250
+```
+
 Installation
 ------------
 
 Using npm:
 
 ```
-npm install ng-slider
+npm install angular-awesome-slider
 ```
 
 Using bower:
 
 ```
-bower install ng-slider
+bower install angular-awesome-slider
 ```
 
 RELEASE
 -------------
 
+* 2.4.2: update angular version + fix for programmatic movement of slider (double value)
+* 2.4.1: non-minified version added + bower update
+* 2.4.0: fix while updating both range values from code
+* 2.3.9: callback not fired in case slider is on threshold values
+* 2.3.8: bind to touch AND non touch events
+* 2.3.7: heterogeneity option
+* 2.3.6: watch options, fix threshold and click handler + date display testing.
+* 2.3.5: do not remember
+* 2.3.4: fix css regressions + modelLabels with function
+* 2.3.3: details for modelLabels options + merge showLabels option
+* 2.3.2: fix css pointer position + hover sking pointers background positions
+* 2.3.1: fix from and to in floating values
+* 2.3.0: new module name, no more ng-sorry-prefix, classname option, sass/scss support, scale object option
+* 2.2.6: refactoring classnames
+* 2.2.5: skin availables + less all css
+* 2.2.4: fix when 2 pointers overlap on limits
+* 2.2.3: mouse up event indicator in callback
+* 2.2.2: default indicator display + visibility and move events
+* 2.2.1: fix disable+default position css+decimal value on init value
+* 2.2.0: handle from greater than to + gap pointer threshold option
 * 2.1.9: fix labels positions while gluing, gap was too big + options changed watch by value
 * 2.1.8: fix labels positions while gluing + realtime model changes option + ngDisable option fix
 * 2.1.7: fix pointer position on click for double value
@@ -148,11 +214,19 @@ npm install -g grunt-cli
 
 ### Issue
 
-To help me on reproducing any issues, please feel free to modify/fork this fiddle: http://jsfiddle.net/darul75/g9e9n8xc/
+To help me on reproducing any issues, please feel free to modify/fork this fiddle: http://jsfiddle.net/darul75/b09m7183/
 
 ## Metrics
 
 [![NPM](https://nodei.co/npm/ng-slider.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/ng-slider/)
+
+## who's who
+
+Who use it ? feel free add issue or edit readme with PR, to see how you use it and give some ideas, thx
+
+[openenergygroup](https://www.openenergygroup.com/)
+
+[google?](https://www.google.com)
 
 ## License
 

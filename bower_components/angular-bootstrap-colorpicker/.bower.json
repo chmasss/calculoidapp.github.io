@@ -21,6 +21,5 @@
   },
   "_source": "git://github.com/buberdds/angular-bootstrap-colorpicker.git",
   "_target": "~3.0.19",
-  "_originalSource": "angular-bootstrap-colorpicker",
-  "_direct": true
+  "_originalSource": "angular-bootstrap-colorpicker"
 }

@@ -1,1 +1,1 @@
-<div class="formula" id="field_{{field.id}}"><span class="prefix">{{field.prefix}}</span> <span data-formula="" data-field-id="{{field.id}}">{{field.result | number:field.decimalPlaces}}</span> <span class="postfix">{{field.postfix}}</span></div>
+<div class="formula" id="field_{{field.id}}"><span class="prefix">{{field.prefix}}</span><calculoid-formula values="formulaValues" formula="field.value" round="getDecimalPlaces(field)" result="field.result" error="field.formulaError"><span class="postfix">{{field.postfix}}</span></div>

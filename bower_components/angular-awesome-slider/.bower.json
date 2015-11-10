@@ -46,7 +46,6 @@
     "commit": "792736e1c5a91616c58f24c5644c98e859451099"
   },
   "_source": "git://github.com/darul75/angular-awesome-slider.git",
-  "_target": "~2.4.2",
-  "_originalSource": "angular-awesome-slider",
-  "_direct": true
+  "_target": "~2.4.x",
+  "_originalSource": "angular-awesome-slider"
 }
