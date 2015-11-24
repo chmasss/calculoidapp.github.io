@@ -3,11 +3,17 @@
 	<div class="prefix">{{field.hint}}</div>
 	<span class="prefix">{{field.prefix}}</span>
 	<input type="text" ng-model="customer.email" class="form-control" id="inputValue" placeholder="Email address">
-	<div class="pt-10" ng-if="field.params.paypalEnabled == 1 && field.params.stripeEnabled == 1">
-		<select ng-model="field.params.paymentGate" class="calculoid-payment-gate form-control">
-			<option value="paypal" ng-selected="field.params.paymentGate === 'paypal' || !field.params.paymentGate">Pay via PayPal
-			<option value="stripe" ng-selected="field.params.paymentGate === 'stripe'">Pay via Stripe - payment card
-		</select>
+	<div class="pt-10 text-center" ng-if="field.params.paypalEnabled == 1 && field.params.stripeEnabled == 1">
+		<label class="calculoid-w50pr">
+			<input type="radio" ng-model="field.params.paymentGate" value="paypal">
+			PayPal
+			<img class="pt-10 calculoid-paymen-logos" src="images/paypal-logo.png" alt="PayPal logo">
+		</label>
+		<label class="calculoid-w50pr">
+			<input type="radio" ng-model="field.params.paymentGate" value="stripe">
+			Credit Card
+			<img class="pt-10 calculoid-paymen-logos" src="images/card-logo.png" alt="Card logo">
+		</label>
 	</div>
 	<div class="text-center pt-10">
 		<button type="button" class="btn btn-primary" ng-click="pay(field)">
