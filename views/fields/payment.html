@@ -7,17 +7,17 @@
 		<label class="calculoid-w50pr">
 			<input type="radio" ng-model="field.params.paymentGate" value="paypal">
 			PayPal
-			<img class="pt-10 calculoid-paymen-logos" src="images/paypal-logo.png" alt="PayPal logo">
+			<img class="pt-10 calculoid-payment-logos" src="images/paypal-logo.png" alt="PayPal logo">
 		</label>
 		<label class="calculoid-w50pr">
 			<input type="radio" ng-model="field.params.paymentGate" value="stripe">
 			Credit Card
-			<img class="pt-10 calculoid-paymen-logos" src="images/card-logo.png" alt="Card logo">
+			<img class="pt-10 calculoid-payment-logos" src="images/card-logo.png" alt="Card logo">
 		</label>
 	</div>
 	<div class="text-center pt-10">
 		<button type="button" class="btn btn-primary" ng-click="pay(field)">
-			<span ng-if="!field.params.buttonText">Pay {{getFieldValue(field.params.priceField) | number}} {{field.params.currency}}</span>
+			<span ng-if="!field.params.buttonText">Proceed to Payment ({{getFieldValue(field.params.priceField) | number}} {{field.params.currency}})</span>
 			<span ng-if="field.params.buttonText">{{getPayButtonText(field)}}</span>
 		</button>
 	</div>
