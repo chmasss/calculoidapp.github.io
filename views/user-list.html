@@ -113,6 +113,6 @@
             
         
     </table>
-    <div class="text-center"><small>total :{{pg.total}}</small></div>
-    <uib-pagination total-items="pg.total" page="pg.current" items-per-page="pg.limit" max-size="9" class="pagination-sm" boundary-links="true" rotate="false" on-select-page="onGoToPage(page)"></uib-pagination>
+    <div class="text-center"><small>total: {{pg.total}}</small></div>
+    <uib-pagination total-items="pg.total" ng-model="pg.current" items-per-page="pg.limit" max-size="9" class="pagination-sm" boundary-links="true" ng-change="onGoToPage()"></uib-pagination>
 </div>

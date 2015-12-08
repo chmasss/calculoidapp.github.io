@@ -27,9 +27,9 @@
             </a>
         </div>
     </div>
-    <accordion close-others="true">
-        <accordion-group ng-repeat="submission in submissions.items">
-            <accordion-heading>
+    <uib-accordion close-others="true">
+        <uib-accordion-group ng-repeat="submission in submissions.items">
+            <uib-accordion-heading>
                 <div ng-click="loadSubmission($index, false)">
                     <span>
                         <i class="fa fa-calendar"></i> {{submission.date}}
@@ -46,7 +46,7 @@
                         {{submission.status}}
                     </span>
                 </div>
-            </accordion-heading>
+            </uib-accordion-heading>
 
             <uib-alert ng-repeat="alert in submission.detail.alerts" type="alert.type">{{alert.msg}}</uib-alert>
 
@@ -141,12 +141,12 @@
                 <small>{{submission.deleteStatus}}</small>
             </button>
 
-        </accordion-group>
-    </accordion>
+        </uib-accordion-group>
+    </uib-accordion>
 
     <div class="clearfix"></div>
     <div class="text-center">
-        <uib-pagination total-items="submissions.pg.total" page="submissions.pg.current" items-per-page="submissions.pg.limit" max-size="9" class="pagination-sm" boundary-links="true" rotate="false" on-select-page="onGoToPage(page)"></uib-pagination>
+        <uib-pagination total-items="submissions.pg.total" ng-model="submissions.pg.current" items-per-page="submissions.pg.limit" max-size="9" boundary-links="true" ng-change="onGoToPage()"></uib-pagination>
     </div>
     <div class="text-center text-muted">
         <span>total: {{submissions.pg.total}}</span>
