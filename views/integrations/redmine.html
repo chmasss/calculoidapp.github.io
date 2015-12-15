@@ -79,6 +79,17 @@
         </small>
     </div>
 </div>
+<div class="row">
+    <h3>Redmine Custom field mapping <button ng-click="loadRedmineCustomFields(calc, 'issue')" class="btn btn-default btn-xs pull-right">Load Redmine Custom Fields</button></h3>
+    <div class="col-md-6 form-group" ng-repeat="field in redmineCustomFields">
+        <label for="inputRedmineCustomField-{{field.id}}">{{field.name}}</label>
+        <input type="text" ng-model="calc.params.redmineCustomFields[field.id]" class="form-control" id="inputRedmineCustomField-{{field.id}}">
+        <small ng-if="field.possible_values">
+            <strong>Available options:</strong>
+            <span ng-repeat="option in field.possible_values">{{option.value}}, </span>
+        </small>
+    </div>
+</div>
 </div>
 <div class="col-md-4">
     <h3>Available variables</h3>
