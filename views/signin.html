@@ -1,16 +1,10 @@
 <div ng-controller="SignInCtrl">
-  <div class="signin">
-    <div class="container">
-      <h1>Sign in to Calculoid</h1>
-    </div>
-  </div>
   <div class="container">
     <div ng-if="user.logged === 'in'" class="row">
-      <div class="alert alert-success">
-        <h3>Hello {{user.name}}!</h3>
-        <p>You are signed in.</p>
-      </div>
-      <div class="">
+      <div>
+        <h1>Hello {{user.name}}!</h1>
+        <p>You are signed in. Take a look how to create a calculator:</p>
+        <iframe width="100%" height="500" src="//www.youtube.com/embed/ZmGSDUIyUeo?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
         <h4>Quick Links</h4>
         <ul class="nav nav-pills">
           <li role="presentation"><a href="#/calculators/">Browse all calculators</a></li>
@@ -20,6 +14,7 @@
       </div>
     </div>
     <div ng-if="user.logged !== 'in'">
+      <h1>Sign in to Calculoid</h1>
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <div class="panel panel-default">
@@ -28,7 +23,7 @@
             </div>
             <div class="panel-body">
               <div class="col-md-12">
-                <uib-alert ng-repeat="alert in alerts.registration" type="alert.type">{{alert.msg}}</uib-alert>
+                <uib-alert ng-repeat="alert in alerts.registration">{{alert.msg}}</uib-alert>
               </div>
               <form name="regform" class="css-form" novalidate>
                 <div class="col-md-12 form-group">
