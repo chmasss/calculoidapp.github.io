@@ -9,6 +9,9 @@
                 <li ng-class="(activeIntegration == 'redmine') ? 'active' : ''">
                     <a ng-click="activeIntegration = 'redmine'; loadRedmineCustomFields(calc, 'issue')">Redmine</a>
                 </li>
+                <li ng-class="(activeIntegration == 'easyredmine-crm') ? 'active' : ''">
+                    <a ng-click="activeIntegration = 'easyredmine-crm'; loadEasyRedmineCustomFields(calc, 'easy_crm_case')">Easy Redmine CRM</a>
+                </li>
             </ul>
         </div>
     </div>
