@@ -72,6 +72,21 @@
         		</select>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputFromName">Send email</label>
+                    <div>
+                        <div class="btn-group" uib-tooltip="In some cases you don't want to send confirmation email by calculoid, but with some other tool like a marketing automation. You can switch the email sending here.">
+                            <button type="button" class="btn btn-default" ng-model="activeField.params.sendEmail" uib-btn-radio="1" ng-class="{active: activeField.params.sendEmail != 0}">Yes</button>
+                            <button type="button" class="btn btn-default" ng-model="activeField.params.sendEmail" uib-btn-radio="0" ng-class="{active: activeField.params.sendEmail == 0}">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
     </uib-tab>
 
     <uib-tab>
