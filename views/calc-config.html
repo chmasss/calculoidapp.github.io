@@ -105,6 +105,24 @@
                             <em>Calculoid will send you email notifications if the view limit will be at 80% and when it will be overcome so you'd be aware of what's going on. You can switch them off if you find them annoying.</em>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="separatorThousand" class="col-md-2 control-label">Thousand separator</label>
+                        <div class="col-md-4">
+                            <select ng-model="calc.params.separatorThousand" id="separatorThousand" class="form-control">
+                                <option value=",">Comma
+                                <option value=".">Dot
+                                <option value="espace">Space
+                            </select>
+                        </div>
+
+                        <label for="separatorDecimal" class="col-md-2 control-label">Decimal separator</label>
+                        <div class="col-md-4">
+                            <select ng-model="calc.params.separatorDecimal" id="separatorDecimal" class="form-control">
+                                <option value=",">Comma
+                                <option value=".">Dot
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div ng-if="!calc.id" class="form-group">
                     <div class="col-md-10 pull-right">
