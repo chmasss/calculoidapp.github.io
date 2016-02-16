@@ -1,76 +1,88 @@
-<div class="container">
-  <h1>{{profile.name}}</h1>
-  <form class="form-horizontal" role="form">
-    <div class="form-group">
-      <label for="inputName" class="col-sm-3 control-label">Public Name</label>
-      <div class="col-sm-9">
-        <input type="text" ng-model="profile.name" class="form-control" id="inputName" placeholder="Name" readonly>
-      </div>
-    </div>
-    <!--<div class="form-group">
-      <label for="inputUserName" class="col-sm-3 control-label">Profile Url</label>
-      <div class="col-sm-9 radio">
-        <a href="http://app.calculoid.com/#/profile/{{profile.username}}">
-        	http://app.calculoid.com/#/profile/{{profile.username}}
-        </a>
-      </div>
-  </div>-->
-    <div class="form-group">
-      <label for="inputEmail" class="col-sm-3 control-label">Email</label>
-      <div class="col-sm-9">
-        <input type="text" ng-model="profile.email" class="form-control" id="inputEmail" readonly>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputApiKey" class="col-sm-3 control-label">ApiKey</label>
-      <div class="col-sm-9">
-        <input type="text" ng-model="profile.apiKey" class="form-control" id="inputApiKey" readonly>
-      </div>
-    </div>
-    <!-- <div class="form-group">
-      <div class="col-sm-offset-3 col-sm-9">
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </div> -->
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Registration Date</label>
-      <div class="col-sm-9 radio">
-  	   {{profile.registerDate}}
-        <small>(<span am-time-ago="profile.registerDate"></span>)</small>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Membership</label>
-      <div class="col-sm-9 radio">
-        {{profile.permissions.name}}
-      </div>
-    </div>
-    <div ng-if="profile.groupExpire" class="form-group">
-      <label class="col-sm-3 control-label">Membership Expiration</label>
-      <div class="col-sm-9 radio">
-        {{profile.groupExpire}}
-        <small>(<span am-time-ago="profile.groupExpire"></span>)</small>
-      </div>
-    </div>
-    <div class="form-group">
-  	<table class="table table-bordered text-center">
-  		<tr>
-  			<th class="text-center">Views Limit
-  			<th class="text-center"># of private calcs
-  			<th class="text-center">Email field
-  			<th class="text-center">Payment Field
-  			<th class="text-center">Hide signature
-  			<th class="text-center">Support
-  		
-  		<tr>
-  			<td>{{profile.permissions.viewsLimit}} / month
-  			<td>{{profile.permissions.privateCalcs}}
-  			<td>{{profile.permissions.canSend}}
-  			<td>{{profile.permissions.canPay}}
-  			<td>{{profile.permissions.canHideSignature}}
-  			<td>{{profile.permissions.canSupport}}
-  		
-  	</table>
-    </div>
-  </form>
+<div ng-if="user.logged != 'in'" ng-include="'views/404.html'"></div>
+<div ng-if="user.logged == 'in'" class="container">
+	<h1>{{user.name}}</h1>
+	<form class="form-horizontal" role="form">
+		<div class="form-group">
+			<label for="inputName" class="col-sm-3 control-label">Public Name</label>
+			<div class="col-sm-9">
+				<input type="text" ng-model="user.name" class="form-control" id="inputName" placeholder="Name" ng-disabled="user.group != 6">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputEmail" class="col-sm-3 control-label">Email</label>
+			<div class="col-sm-9">
+				<input type="text" ng-model="user.email" class="form-control" id="inputEmail" ng-disabled="user.group != 6">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputApiKey" class="col-sm-3 control-label">ApiKey</label>
+			<div class="col-sm-9">
+				<input type="text" ng-model="user.apiKey" class="form-control" id="inputApiKey" readonly>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Registration Date</label>
+			<div class="col-sm-9">
+				{{user.registerDate}}
+				<small>(<span am-time-ago="user.registerDate"></span>)</small>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Membership</label>
+			<div class="col-sm-9">
+				{{user.permissions.name}}
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Membership Expiration</label>
+			<div ng-if="user.groupExpire" class="col-sm-9">
+				{{user.groupExpire}}
+				<small>(<span am-time-ago="user.groupExpire"></span>)</small>
+			</div>
+			<div ng-if="!user.groupExpire" class="col-sm-9">
+				Never
+			</div>
+		</div>
+		<div ng-if="user.group == 6" class="form-group">
+			<div class="col-sm-offset-3 col-sm-9">
+				<button type="submit" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+		<div class="form-group">
+			<table class="table table-bordered text-center">
+				<tr>
+					<th class="text-center">Views Limit
+					<th class="text-center">Number of private calcs
+					<th class="text-center">Email field
+					<th class="text-center">Payment Field
+					<th class="text-center">Hide signature
+					<th class="text-center">Support
+				
+				<tr>
+					<td>{{user.permissions.viewsLimit | formatNumber}} / month
+					<td>
+						<span ng-if="user.permissions.privateCalcs">yes</span>
+						<span ng-if="!user.permissions.privateCalcs">no</span>
+					
+					<td>
+						<span ng-if="user.permissions.canSend">yes</span>
+						<span ng-if="!user.permissions.canSend">no</span>
+					
+					<td>
+						<span ng-if="user.permissions.canPay">yes</span>
+						<span ng-if="!user.permissions.canPay">no</span>
+					
+					<td>
+						<span ng-if="user.permissions.canHideSignature">yes</span>
+						<span ng-if="!user.permissions.canHideSignature">no</span>
+					
+					<td>
+						<span ng-if="user.permissions.canSupport">yes</span>
+						<span ng-if="!user.permissions.canSupport">no</span>
+					
+				
+			</table>
+		</div>
+	</form>
 </div>
