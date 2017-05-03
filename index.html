@@ -11,7 +11,7 @@
   <meta name="keywords" content="calculator, calc, website, widget, joomla, drupal, wordpress">
   <meta name="viewport" content="width=device-width">
 
-  <link rel="stylesheet" href="styles/94e8e486.combined.min.css">
+  <link rel="stylesheet" href="styles/f2d30742.combined.min.css">
 
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 
@@ -66,7 +66,8 @@
         <li><a href="http://calculoid.com/blog">Blog</a></li>
         <li><a href="http://calculoid.com/contacts">Contacts</a></li>
       </ul>
-      <ul class="nav navbar-nav" ng-include="'views/user-area-'+user.logged+'.html'"></ul>
+      
+      <ul class="nav navbar-nav" ng-include="user.logged ? 'views/user-area-' +user.logged+'.html' : null"></ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -110,7 +111,7 @@
 <script src="bower_components/json3/lib/json3.min.js"></script>
 <![endif]-->
 
-<script src="scripts/d78d75a6.combined.min.js"></script>
+<script src="scripts/206ca5d6.combined.min.js"></script>
 
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
@@ -123,6 +124,16 @@
   // ga('send', 'pageview');
 </script>
 
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="//v2.zopim.com/?4CeJRjhSER6ZLENgX5kQSaoSJom9ki1M";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+</script>
+<!--End of Zopim Live Chat Script-->
+
 <script type="text/javascript">
   (function() {
     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -130,6 +141,7 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
 </script>
+
 <img ng-src="http://m.calculoid.com/mtracking.gif">
 
 

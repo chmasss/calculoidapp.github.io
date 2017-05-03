@@ -58,4 +58,4 @@
 </div>
 <div class="clearfix"></div>
 
-<div ng-include="loadGeneralToolbar()" ng-controller="ToolbarCtrl" class="navbar navbar-default navbar-fixed-bottom" ng-style="getToolbarStyle()" id="editor-tools"></div>
+<div ng-include="loadGeneralToolbar()" ng-click="toggleSearch()" ng-class="{expanded: open, collapsed: !open}" ng-controller="ToolbarCtrl" class="hander-right navbar navbar-default navbar-fixed-bottom" ng-style="getToolbarStyle()" document-click="click($event)" id="editor-tools"></div>

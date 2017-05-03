@@ -1,5 +1,5 @@
-<div class="container more-space">
-
+<div class="more-space">
+    <span class="fa fa-times close-toolbar-content" ng-click="toolbarClose();"> </span>
     <p>This calculator was created by {{calc.author}} <abbr title="{{calc.created}}"><span am-time-ago="calc.created"></span></abbr> and lastly modified <abbr title="{{calc.modified}}"><span am-time-ago="calc.modified"></span></abbr>. <span ng-if="calc.languageName">It is listed under {{calc.languageName}} language.</span></p>
 
     <p ng-if="calc.parentId">This calculator was originally copied from <a href="#/calculator/{{calc.parentId}}">this calculator</a>.</p>

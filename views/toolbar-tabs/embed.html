@@ -1,4 +1,5 @@
-<div class="container more-space">
+<div class="more-space">
+    <span class="fa fa-times close-toolbar-content" ng-click="toolbarClose();"> </span>
     <uib-alert ng-if="calc.finished == 0" type="notice">
         Your calculator is hidden from the world right now. Take your time to build it. Once you finish your work, mark the calculator as finished in <a ng-click="loadToolbarTab('edit-calc')">the configuration</a>. That will publish it to the list of calculators and it will be possible to embed it.
     </uib-alert>
