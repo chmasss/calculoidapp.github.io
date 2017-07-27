@@ -1,0 +1,57 @@
+<ul class="nav navbar-nav toolbar-nav">
+    <li ng-if="calc.canEdit" ng-class="activeTab('add-field')" class="col-md-2">
+        <a ng-click="loadToolbarTab('add-field')">
+            Add
+        </a>
+    </li>
+    <li ng-if="hasFields() && calc.canEdit" ng-class="activeTab('edit-field')" class="col-md-2">
+        <a ng-click="loadToolbarTab('edit-field')">
+            Edit
+        </a>
+    </li>
+    <li ng-if="calc.canEdit" ng-class="activeTab('edit-calc')" class="col-md-2">
+        <a ng-click="loadToolbarTab('edit-calc')">
+            Configure
+        </a>
+    </li>
+    <li ng-if="calc.canEdit" ng-class="activeTab('integrations')" class="col-md-2">
+        <a ng-click="loadToolbarTab('integrations')">
+            Integrate
+        </a>
+    </li>
+</ul>
+
+<div class="col-md-12 toolbar-content" ng-include="displayToolbarTabDetails()" id="{{toolbar.tab}}"></div>
+
+<div class="toolbar-nav-bg"></div>
+
+<ul class="nav navbar-nav navbar-head">
+    <li ng-class="activeTab('details')">
+        <a ng-click="loadToolbarTab('details')">
+            Details
+        </a>
+    </li>
+    <li ng-class="activeTab('copy')">
+        <a ng-click="loadToolbarTab('copy')">
+            Copy
+        </a>
+    </li>
+    <li ng-class="activeTab('embed')">
+        <a ng-click="loadToolbarTab('embed')">
+            Embed
+        </a>
+    </li>
+    <li ng-class="save-btn">
+        <button ng-if="calc.canEdit" type="button" class="btn btn-info save pull-right" ng-click="saveCalc();toolbarClose();" style="margin-left: 25px; margin-right: 20px;">
+            {{saveStatus}}
+        </button>
+    </li>
+</ul>
+
+<div ng-if="!hasFields()" ng-init="loadToolbarTab('add-field')">
+</div>
+
+<div ng-if="hasFields()" ng-init="loadToolbarTab('details')">
+</div>
+
+<a href="http://www.calculoid.com/pricing" class="btn btn-link upgrade-btn ng-scope" style="font-size: 16px;"><i class="fa fa-cloud-upload" style="font-size: 25px;padding: 5px;"></i>Upgrade your subscription now</a>

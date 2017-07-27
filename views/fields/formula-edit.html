@@ -1,0 +1,17 @@
+<uib-tabset vertical="true" type="pills">
+    <uib-tab>
+        <tab-heading>Basic settings</tab-heading>
+        <div ng-include="'views/fields/edit-basic.html'"></div>
+    </uib-tab>
+
+    <uib-tab>
+        <tab-heading>Formula<span onclick="formula_start();" style="position: absolute; left: 0; top: 0; bottom: 0; right: 0;"></span></tab-heading>
+        <div class="formula-editor-field" data-texteditor rows="5" cols="40"></div>
+        <button ng-click="runFormula()" class="btn btn-default btn-runformula true">Run Formula</button>
+    </uib-tab>
+
+    <uib-tab>
+        <tab-heading>Appearance</tab-heading>
+        <div ng-include="'views/fields/edit-appearance.html'"></div>
+    </uib-tab>
+</uib-tabset>

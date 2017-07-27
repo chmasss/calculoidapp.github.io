@@ -1,0 +1,55 @@
+<div ng-controller="SignInCtrl">
+  <div class="container">
+    <div class="col-md-6" style="margin: auto;float: inherit;">
+      <h1 style="text-align: center;">Sign up to Calculoid</h1>
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title" style="text-align: center;">Register a New Calculoid Account</h3>
+            </div>
+            <div class="panel-body">
+              <div class="col-md-12">
+                <uib-alert ng-repeat="alert in alerts.registration">{{alert.msg}}</uib-alert>
+              </div>
+              <form name="regform" class="css-form" novalidate>
+                <div class="col-md-12 form-group">
+                  <label for="register-name">First & Last Name</label>
+                  <input type="text" ng-model="registerUser.name" class="form-control" id="register-name" placeholder="First Name & Last Name" name="regName" required />
+                </div>
+                <div class=" col-md-12 form-group">
+                  <label for="register-email">Email</label>
+                  <input type="email" ng-model="registerUser.email" class="form-control" id="register-email" placeholder="Email" name="regEmail" required />
+                </div>
+                <div class="col-md-12 form-group">
+                  <label for="register-password">Password</label>
+                  <input type="password" ng-model="registerUser.password" class="form-control" id="register-password" placeholder="Password" name="regPassword" required />
+                </div>
+                <div class="col-md-12 form-group">
+                  <label for="register-password2">Retype password</label>
+                  <input type="password" ng-model="registerUser.password2" class="form-control" id="register-password2" placeholder="Retype password" name="regPassword2" required />
+                </div>
+                <div class="col-md-12 form-group" uib-tooltip-placement="left" uib-tooltip="Fill in all registration fields to be able to register." style="text-align: center;">
+                  <button class="btn btn-info" ng-click="register()" ng-disabled="(regform.$invalid)">
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title" style="text-align: center;">Or use your Google account</h3>
+            </div>
+            <div class="panel-body">
+              <div class="col-md-12" ng-app="directive.g+signin" style="width: 250px; left: 25%;">
+                <google-plus-signin clientid="807258428496-0mg65aok8dn9ja3aablc280bm4pfcrt3.apps.googleusercontent.com"></google-plus-signin>
+              </div>
+            </div>
+          </div>
+          <a href="?#/signin" class="btn btn-link" style="width: 100%">Already have an account? <strong>Sign in</strong>.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
