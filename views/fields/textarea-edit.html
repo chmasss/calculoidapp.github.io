@@ -1,4 +1,4 @@
-<uib-tabset>
+<uib-tabset vertical="true" type="pills">
     <uib-tab>
         <tab-heading>Basic settings</tab-heading>
         <div ng-include="'views/fields/edit-basic.html'"></div>
@@ -7,13 +7,13 @@
     <uib-tab>
         <tab-heading>Textarea Field Config</tab-heading>
         <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label for="inputValue">Textarea Height</label>
                     <input type="text" ng-model="activeField.params.textareaHeight" class="form-control" id="inputValue" placeholder="Default rows">
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label>Show word count</label>
                     <div>

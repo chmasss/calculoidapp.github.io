@@ -1,3 +1,6 @@
+<script>
+    new_calc = false;
+</script>
 <div class="calculator-list-header">
     <div class="container">
         <h1>
@@ -18,7 +21,7 @@
                 </div>
             </div>
             <div class="search col-xs-4">
-                <a ng-click="create()" class="btn btn btn-primary ng-binding pull-right">
+                <a onclick="new_calc_edit = true" ng-click="create()" class="btn btn btn-primary ng-binding pull-right hidden-phone">
                     <i class="fa fa-plus-circle"></i> New Calculator
                 </a>
             </div>

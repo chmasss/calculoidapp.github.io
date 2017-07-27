@@ -17,7 +17,7 @@
     "tag": "v3.0.0",
     "commit": "686019b903c487e1124c19d569ed592971177f9f"
   },
-  "_source": "git://github.com/mbenford/ngTagsInput-bower.git",
+  "_source": "https://github.com/mbenford/ngTagsInput-bower.git",
   "_target": "~3.0.x",
   "_originalSource": "ng-tags-input"
 }

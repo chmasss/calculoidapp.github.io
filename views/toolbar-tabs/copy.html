@@ -1,19 +1,25 @@
-<div class="more-space">
-    <span class="fa fa-times close-toolbar-content" ng-click="toolbarClose();"> </span>
+<div class="col-md-12">
+
     <h3>Copy this calculator</h3>
 
     <p>Logged in user can copy any public calculator and modify it. As an author of a calculator, you'll have access to statistics, submissions and payments of your copy.</p>
 
-    <div class="text-center">
+    <div>
+        <div ng-if="user.group != '2'">
         <a ng-if="user.logged == 'in'" ng-click="copy(calc.id)" class="btn btn-default">
             <i class="fa fa-files-o"></i> Copy
         </a>
+        </div>
+        <div ng-if="user.group == '2' && user.logged == 'in'">
+            <a href="http://www.calculoid.com/pricing" class="btn btn-link">
+                <i class="fa fa-cloud-upload" style="font-size: 25px;padding: 5px"></i> Upgrade your subscription to copy this calculator
+            </a>
+        </div>
 
         <span ng-if="calc.canEdit">(You are already author of this calc)</span>
-
-        <button ng-if="user.logged != 'in'" disabled class="btn btn-default">
-            <i class="fa fa-files-o"></i> Copy
-        </button>
+            <button ng-if="user.logged != 'in'" disabled class="btn btn-default">
+                <i class="fa fa-files-o"></i> Copy
+            </button>
     </div>
 
 </div>
