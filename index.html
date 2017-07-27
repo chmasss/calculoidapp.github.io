@@ -11,20 +11,7 @@
   <meta name="keywords" content="calculator, calc, website, widget, joomla, drupal, wordpress">
   <meta name="viewport" content="width=device-width">
 
-  <!-- build:css styles/combined.min.css -->
-  <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
-  <link rel='stylesheet' href='/bower_components/textAngular/dist/textAngular.css'>
-  <link rel="stylesheet" href="bower_components/angular-loading-bar/src/loading-bar.css" />
-  <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
-  <link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css" />
-  <link rel="stylesheet" href="bower_components/angular-awesome-slider/dist/css/angular-awesome-slider.min.css" />
-  <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
-  <link rel="stylesheet" href="bower_components/angular-notify/angular-notify.css" />
-
-  <link rel="stylesheet" href="styles/themes.css" />
-  <link rel="stylesheet" href="styles/calculoid.css" />
-  <link rel="stylesheet" href="styles/animations.css" />
-  <!-- endbuild -->
+  <link rel="stylesheet" href="styles/a02704c4.combined.min.css">
 
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 
@@ -43,14 +30,16 @@
   </script>
   <![endif]-->
 
-</head>
-<body id="ng-app" ng-app="calculoid" onmousemove="new_calc_alert();">
+
+<body id="ng-app" ng-app="calculoid">
 
 <!--[if lt IE 7]>
 <script src="bower_components/json3/lib/json3.min.js" ></script>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<nav class="navbar navbar-default navbar-fixed-top header-navigation" role="navigation" ng-controller="NavigationCtrl">
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="NavigationCtrl">
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" ng-click="navIsCollapsed = !navIsCollapsed">
@@ -59,45 +48,36 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
-      <a class="navbar-brand" href="#/">
-        <img src="images/Logo_Calculoid.svg" style="margin-top: 2px; height: 40px;" alt="Calculoid logo" />
+      <a class="navbar-brand" href="#">
+        <img src="images/calculoid-logo.png" alt="Calculoid logo">
+        <small>website calculators widget</small>
       </a>
     </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right" uib-collapse="navIsCollapsed">
-      <ul class="nav navbar-nav visible-phone">
+      <ul class="nav navbar-nav">
         <li class="first"><a href="http://calculoid.com/" class="first">Home</a></li>
-        <li><a href="http://calculoid.com/product" >Product</a></li>
+        <li><a href="http://calculoid.com/features">Features</a></li>
         <li><a href="http://calculoid.com/faq">FAQ</a></li>
-        <li><a href="http://calculoid.com/solutions">Showcase</a></li>
-        <li><a href="http://calculoid.com/pricing" >Pricing</a></li>
-        <li class="active"><a href="#/calculators">Calculators</a></li>
+        <li ng-class="{active: activetab=='/showcase'}"><a href="#/showcase">Showcase</a></li>
+        <li><a href="http://calculoid.com/pricing">Pricing</a></li>
+        <li ng-class="{active: activetab=='/calculators' || activetab== '/'}"><a href="#/calculators">Calculators</a></li>
         <li><a href="http://calculoid.com/blog">Blog</a></li>
-        <li><a href="http://calculoid.com/contacts" >Contacts</a></li>
+        <li><a href="http://calculoid.com/contacts">Contacts</a></li>
       </ul>
-      <a class="ham-menu-btn" id="hamMenuBtn">
-        <div class="ham-menu-close-div"></div>
-        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMzJweCIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMyIDMyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMzIgMzIiIHdpZHRoPSIzMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNNCwxMGgyNGMxLjEwNCwwLDItMC44OTYsMi0ycy0wLjg5Ni0yLTItMkg0QzIuODk2LDYsMiw2Ljg5NiwyLDhTMi44OTYsMTAsNCwxMHogTTI4LDE0SDRjLTEuMTA0LDAtMiwwLjg5Ni0yLDIgIHMwLjg5NiwyLDIsMmgyNGMxLjEwNCwwLDItMC44OTYsMi0yUzI5LjEwNCwxNCwyOCwxNHogTTI4LDIySDRjLTEuMTA0LDAtMiwwLjg5Ni0yLDJzMC44OTYsMiwyLDJoMjRjMS4xMDQsMCwyLTAuODk2LDItMiAgUzI5LjEwNCwyMiwyOCwyMnoiLz48L3N2Zz4=">
-      </a>
-      <ul class="nav navbar-nav" ng-include="'views/user-area-'+user.logged+'.html'"></ul>
-    </div>
+      
+      <ul class="nav navbar-nav" ng-include="user.logged ? 'views/user-area-' +user.logged+'.html' : null"></ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
 
 <div class="container-fluid view-container">
-  <ul class="nav nav-pills ham-nav">
-    <li class="first"><a href="http://calculoid.com/" class="first">Home</a></li>
-    <li><a href="http://calculoid.com/product" >Product</a></li>
-    <li><a href="http://calculoid.com/faq">FAQ</a></li>
-    <li><a href="http://calculoid.com/solutions">Showcase</a></li>
-    <li><a href="http://calculoid.com/pricing" >Pricing</a></li>
-    <li class="active"><a href="#/calculators">Calculators</a></li>
-    <li><a href="http://calculoid.com/blog">Blog</a></li>
-    <li><a href="http://calculoid.com/contacts" >Contacts</a></li>
-  </ul>
-  <div ng-view class="view-frame fade-view" autoscroll="true"></div>
+  <div ng-view="" class="view-frame fade-view" autoscroll="true"></div>
 </div>
-<!--<footer class="container-fluid">
+
+<footer class="container-fluid">
+  <div class="container">
     <div class="navbar navbar-nav">
       <ul class="menu list-unstyled list-inline">
         <li><a href="http://calculoid.com/terms-of-service">Terms of Service</a></li>
@@ -123,89 +103,17 @@
         <li><a href="https://www.youtube.com/channel/UCqpQlnYud4jUwLdet7MmLHA/videos" target="_blank"><i class="fa fa-youtube"></i> YouTube</a></li>
       </ul>
     </div>
-</footer>-->
+  </div>
+</footer>
 
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
 <![endif]-->
 
-<!-- build:js scripts/combined.min.js -->
-<!-- bower:js -->
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-awesome-slider/dist/angular-awesome-slider.js"></script>
-<script src="bower_components/angular-bindonce/bindonce.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
-<script src="bower_components/javascript-detect-element-resize/detect-element-resize.js"></script>
-<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
-<script src="bower_components/moment/moment.js"></script>
-<script src="bower_components/angular-moment/angular-moment.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/json3/lib/json3.js"></script>
-<script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
-<script src="bower_components/rangy/rangy-core.js"></script>
-<script src="bower_components/rangy/rangy-classapplier.js"></script>
-<script src="bower_components/rangy/rangy-highlighter.js"></script>
-<script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
-<script src="bower_components/rangy/rangy-serializer.js"></script>
-<script src="bower_components/rangy/rangy-textrange.js"></script>
-<script src="bower_components/textAngular/dist/textAngular.js"></script>
-<script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
-<script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
-<script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
-<script src="bower_components/angular-notify/dist/angular-notify.js"></script>
-<!-- endbower -->
-<script src="bower_components/angular-awesome-slider/dist/angular-awesome-slider.min.js"></script>
-<script src="bower_components/angular-gridster/src/angular-gridster.js"></script>
-<script src="scripts/app.js"></script>
-<script src="scripts/controllers/calc-list.js"></script>
-<script src="scripts/controllers/calc-detail.js"></script>
-<script src="scripts/controllers/calc-report.js"></script>
-<script src="scripts/controllers/contact.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/navigation.js"></script>
-<script src="scripts/controllers/sign-in.js"></script>
-<script src="scripts/controllers/showcase.js"></script>
-<script src="scripts/controllers/password-reset.js"></script>
-<script src="scripts/controllers/submissions.js"></script>
-<script src="scripts/controllers/webhooks.js"></script>
-<script src="scripts/controllers/profile.js"></script>
-<script src="scripts/controllers/toolbar.js"></script>
-<script src="scripts/controllers/users.js"></script>
-<script src="scripts/controllers/stats.js"></script>
-<script src="scripts/services/calc.js"></script>
-<script src="scripts/services/field.js"></script>
-<script src="scripts/services/user.js"></script>
-<script src="scripts/services/chart.js"></script>
-<script src="scripts/services/http-error-handler.js"></script>
-<script src="scripts/filters/order-object-by.js"></script>
-<script src="scripts/filters/format-number.js"></script>
-<script src="scripts/directives/formula.js"></script>
-<script src="scripts/directives/google-plus-signin.js"></script>
-<script src="scripts/directives/textarea-editor.js"></script>
-<script src="scripts/directives/flexicolor.js"></script>
-<script src="scripts/vendor/js-expression-eval.js"></script>
-<!-- endbuild -->
+<script src="scripts/11727c8d.combined.min.js"></script>
 
-<script src="scripts/jquery-3.2.1.min.js"></script>
-<script src="scripts/noangular.js"></script>
 <script src="https://checkout.stripe.com/checkout.js"></script>
-
-<script>
-  document.getElementById('hamMenuBtn').addEventListener('click', function () {
-    var body = document.getElementsByTagName('body')[0];
-    if (body.classList.contains('ham-menu')) {
-      body.classList.remove('ham-menu');
-    } else {
-      body.classList.add('ham-menu');
-    }
-  });
-</script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -234,7 +142,6 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
   })();
 </script>
 
-<img ng-src="http://m.calculoid.com/mtracking.gif" />
-</body>
+<img ng-src="http://m.calculoid.com/mtracking.gif">
 
-</html>
+

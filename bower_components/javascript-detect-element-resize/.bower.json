@@ -27,7 +27,7 @@
     "tag": "v0.5.3",
     "commit": "1b79a1a0d3624e075c5ffb1e4c8dd8b9f42ff1f4"
   },
-  "_source": "https://github.com/sdecima/javascript-detect-element-resize.git",
+  "_source": "git://github.com/sdecima/javascript-detect-element-resize.git",
   "_target": "~0.5.1",
-  "_originalSource": "javascript-detect-element-resize"
+  "_originalSource": "sdecima/javascript-detect-element-resize"
 }

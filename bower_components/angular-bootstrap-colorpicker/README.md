@@ -15,17 +15,6 @@ Previous releases:
 
 Installation
 ===============================
-
-#### npm
-```shell
-$ npm install angular-bootstrap-colorpicker --save
-```
-
-#### bower
-```shell
-$ bower install angular-bootstrap-colorpicker --save
-```
-
 Copy `css/colorpicker.css` and `js/bootstrap-colorpicker-module.js`.
 Add a dependency to your app, for instance:
 
@@ -91,11 +80,6 @@ Binding the visibility of the color picker to a variable in the scope
 Auto hiding the color picker when a color has been selected
 ```html
 <input colorpicker colorpicker-close-on-select type="text" ng-model="your_model" />
-```
-
-Customize a size of the color picker saturation panel
-```html
-<input colorpicker colorpicker-size="200" type="text" ng-model="your_model" />
 ```
 
 Events:

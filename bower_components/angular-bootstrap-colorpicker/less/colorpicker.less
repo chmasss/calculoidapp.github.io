@@ -10,7 +10,6 @@ colorpicker-saturation {
   width: 100px;
   height: 100px;
   background-image: data-uri('@{colorpicker-path}/img/saturation.png');
-  background-size: contain;
   cursor: crosshair;
   float: left;
   i {
@@ -57,7 +56,6 @@ colorpicker-alpha {
 
 colorpicker-hue {
   background-image: data-uri('@{colorpicker-path}/img/hue.png');
-  background-size: contain;
 }
 
 colorpicker-alpha {
@@ -67,13 +65,12 @@ colorpicker-alpha {
 colorpicker-alpha,
 .colorpicker-color {
   background-image: data-uri('@{colorpicker-path}/img/alpha.png');
-  background-size: 10px 100%;
 }
 
 .colorpicker {
   top: 0;
   left: 0;
-  z-index: 99999;
+  z-index: 9999;
   display: none;
   colorpicker-hue,
   colorpicker-alpha,
