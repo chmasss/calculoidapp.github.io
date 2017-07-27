@@ -1,3 +1,4 @@
+
 <div class="modal-content" ng-controller="SignInCtrl">
 	<div ng-if="user.logged === 'in'" class="row modal-body">
 		<div class="modal-header">
@@ -41,7 +42,7 @@
 						<i class="fa fa-medkit"></i> Reset password
 					</button>
 				</div>
-			</form></div>
+			</div>
 			<div ng-if="showResetForm === true">
 				<h4>Reset your password</h4>
 				<div class="form-group">
@@ -75,19 +76,19 @@
 			<form name="regform" class="css-form" novalidate>
 				<div class="col-xs-6 form-group">
 					<label for="register-name">First Name & Last Name</label>
-					<input type="text" ng-model="registerUser.name" class="form-control" id="register-name" placeholder="First Name & Last Name" name="regName" required>
+					<input type="text" ng-model="registerUser.name" class="form-control" id="register-name" placeholder="First Name & Last Name" name="regName" required />
 				</div>
 				<div class="col-xs-6 form-group">
 					<label for="register-email">Email</label>
-					<input type="email" ng-model="registerUser.email" class="form-control" id="register-email" placeholder="Email" name="regEmail" required>
+					<input type="email" ng-model="registerUser.email" class="form-control" id="register-email" placeholder="Email" name="regEmail" required />
 				</div>
 				<div class="col-xs-6 form-group">
 					<label for="register-password">Password</label>
-					<input type="password" ng-model="registerUser.password" class="form-control" id="register-password" placeholder="Password" name="regPassword" required>
+					<input type="password" ng-model="registerUser.password" class="form-control" id="register-password" placeholder="Password" name="regPassword" required />
 				</div>
 				<div class="col-xs-6 form-group">
 					<label for="register-password2">Retype password</label>
-					<input type="password" ng-model="registerUser.password2" class="form-control" id="register-password2" placeholder="Retype password" name="regPassword2" required>
+					<input type="password" ng-model="registerUser.password2" class="form-control" id="register-password2" placeholder="Retype password" name="regPassword2" required />
 				</div>
 				<div class="col-xs-6 form-group" uib-tooltip-placement="left" uib-tooltip="Fill in all registration fields to be able to register.">
 					<button class="btn btn-success" ng-click="register()" ng-disabled="(regform.$invalid)">

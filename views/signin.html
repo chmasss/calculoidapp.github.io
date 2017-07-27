@@ -13,14 +13,14 @@
         </ul>
       </div>
     </div>
-    <div ng-if="user.logged !== 'in'" class="col-md-6" style="margin: auto;float: inherit">
-      <h1 style="text-align: center">Sign in to Calculoid</h1>
+    <div ng-if="user.logged !== 'in'" class="col-md-6" style="margin: auto;float: inherit;">
+      <h1 style="text-align: center;">Sign in to Calculoid</h1>
       <div class="row">
         <div class="col-md-12 col-xs-12">
           <div ng-if="showResetForm !== true">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title" style="text-align: center">Sign in using credentials</h3>
+                <h3 class="panel-title" style="text-align: center;">Sign in using credentials</h3>
               </div>
               <div class="panel-body">
                 <div class="col-md-12">
@@ -39,7 +39,7 @@
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group" style="text-align: center">
+                  <div class="form-group" style="text-align: center;">
                     <button class="btn btn-info" ng-click="authenticate('calculoid')">
                       <i class="fa fa-unlock-alt"></i> Log-in
                     </button><br>
@@ -78,15 +78,15 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title" style="text-align: center">Or use your Google account</h3>
+              <h3 class="panel-title" style="text-align: center;">Or use your Google account</h3>
             </div>
             <div class="panel-body">
-              <div class="col-md-12" ng-app="directive.g+signin" style="width: 250px; left: 25%">
+              <div class="col-md-12" ng-app="directive.g+signin" style="width: 250px; left: 25%;">
                 <google-plus-signin clientid="807258428496-0mg65aok8dn9ja3aablc280bm4pfcrt3.apps.googleusercontent.com"></google-plus-signin>
               </div>
             </div>
           </div>
-          <a href="?#/signup" class="btn btn-link" style="width: 100%">Don't have an account? <strong>Sign up</strong></a>
+          <a href="?#/signup" class="btn btn-link" style="width: 100%;">Don't have an account? <strong>Sign up</strong></a>
         </div>
       </div>
     </div>

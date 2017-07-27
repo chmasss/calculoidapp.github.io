@@ -42,7 +42,7 @@
         </a>
     </li>
     <li ng-class="save-btn">
-        <button ng-if="calc.canEdit" type="button" class="btn btn-info save pull-right" ng-click="saveCalc();toolbarClose();" style="margin-left: 25px; margin-right: 20px">
+        <button ng-if="calc.canEdit" type="button" class="btn btn-info save pull-right" ng-click="saveCalc();toolbarClose();" style="margin-left: 25px; margin-right: 20px;">
             {{saveStatus}}
         </button>
     </li>
@@ -54,4 +54,4 @@
 <div ng-if="hasFields()" ng-init="loadToolbarTab('details')">
 </div>
 
-<a href="http://www.calculoid.com/pricing" class="btn btn-link upgrade-btn ng-scope" style="font-size: 16px"><i class="fa fa-cloud-upload" style="font-size: 25px;padding: 5px"></i>Upgrade your subscription now</a>
+<a href="http://www.calculoid.com/pricing" class="btn btn-link upgrade-btn ng-scope" style="font-size: 16px;"><i class="fa fa-cloud-upload" style="font-size: 25px;padding: 5px;"></i>Upgrade your subscription now</a>

@@ -4,13 +4,13 @@
         <label for="inputRedmineUrl">Redmine URL<small>
             The base URL address to your Redmine installation. Has to start with http:// or https://.
         </small></label>
-        <input type="url" ng-model="calc.params.redmineUrl" placeholder="http://" class="form-control" id="inputRedmineUrl">
+        <input type="url" ng-model="calc.params.redmineUrl" placeholder="http://" class="form-control" id="inputRedmineUrl" />
     </div>
     <div class="col-md-12">
         <label for="inputRedmineKey">Redmine API key<small>
             The API key of the account which will be author of the created issues. API key can be found in the Redmine Account Detail.
         </small></label>
-        <input type="text" ng-model="calc.params.redmineKey" class="form-control" id="inputRedmineKey">
+        <input type="text" ng-model="calc.params.redmineKey" class="form-control" id="inputRedmineKey" />
     </div>
 </div>
 <div class="row">
@@ -18,13 +18,13 @@
         <label for="inputRedmineSubject">Subject<small>
             Subject of the issue.
         </small></label>
-        <input type="text" ng-model="calc.params.redmineSubject" class="form-control" id="inputRedmineSubject">
+        <input type="text" ng-model="calc.params.redmineSubject" class="form-control" id="inputRedmineSubject" />
     </div>
     <div class="col-md-12">
         <label for="inputRedmineDescription">Description<small>
             Description of the issue.
         </small></label>
-        <input type="text" ng-model="calc.params.redmineDescription" class="form-control" id="inputRedmineDescription">
+        <input type="text" ng-model="calc.params.redmineDescription" class="form-control" id="inputRedmineDescription" />
     </div>
 </div>
 <div class="row">
@@ -32,13 +32,13 @@
         <label for="inputRedmineProject">Project ID<small>
             Id of the project the issue will create in. The ID can be seen in the URL when you view the project.
         </small></label>
-        <input type="text" ng-model="calc.params.redmineProject" class="form-control" id="inputRedmineProject">
+        <input type="text" ng-model="calc.params.redmineProject" class="form-control" id="inputRedmineProject" />
     </div>
     <div class="col-md-12">
         <label for="inputRedmineTracker">Tracker ID<small>
             Id of the tracker the issue will be created with.
         </small></label>
-        <input type="text" ng-model="calc.params.redmineTracker" class="form-control" id="inputRedmineTracker">
+        <input type="text" ng-model="calc.params.redmineTracker" class="form-control" id="inputRedmineTracker" />
     </div>
 </div>
 <div class="row">
@@ -46,13 +46,13 @@
         <label for="inputRedmineStatus">Status ID<small>
             Id of the status the issue will be created with.
         </small></label>
-        <input type="text" ng-model="calc.params.redmineStatus" class="form-control" id="inputRedmineProject">
+        <input type="text" ng-model="calc.params.redmineStatus" class="form-control" id="inputRedmineProject" />
     </div>
     <div class="col-md-12">
         <label for="inputRedminePriority">Priority ID<small>
             Id of the priority the issue will be created with.
         </small></label>
-        <input type="text" ng-model="calc.params.redminePriority" class="form-control" id="inputRedminePriority">
+        <input type="text" ng-model="calc.params.redminePriority" class="form-control" id="inputRedminePriority" />
     </div>
 </div>
 <div class="row">
@@ -60,13 +60,13 @@
         <label for="inputRedmineAssignedTo">Assigned to ID<small>
             Id of the assigned to (redmine user) the issue will be created with.
         </small></label>
-        <input type="text" ng-model="calc.params.redmineAssignedTo" class="form-control" id="inputRedmineAssignedTo">
+        <input type="text" ng-model="calc.params.redmineAssignedTo" class="form-control" id="inputRedmineAssignedTo" />
     </div>
     <div class="col-md-12">
         <label for="inputRedmineActivity">Activity ID<small>
             Id of the activity the issue will be created with.
         </small></label>
-        <input type="text" ng-model="calc.params.redmineActivity" class="form-control" id="inputRedmineActivity">
+        <input type="text" ng-model="calc.params.redmineActivity" class="form-control" id="inputRedmineActivity" />
     </div>
 </div>
 <div class="row">
@@ -78,7 +78,7 @@
                 <strong>Available options:</strong>
                 <span ng-repeat="option in field.possible_values">{{option.value}}, </span>
             </small></label>
-            <input type="text" ng-model="calc.params.redmineCustomFields[field.id]" class="form-control" id="inputRedmineCustomField-{{field.id}}">
+            <input type="text" ng-model="calc.params.redmineCustomFields[field.id]" class="form-control" id="inputRedmineCustomField-{{field.id}}" />
         </div>
     </div>
 </div>

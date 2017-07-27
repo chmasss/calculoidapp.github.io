@@ -10,17 +10,17 @@
     </div>
 
     <form action="https://codepen.io/pen/define" method="POST" target="_blank" class="col-md-6">
-        <input type="hidden" name="data" value="{&quot;title&quot;: &quot;{{calc.name}}&quot;, &quot;html&quot;: &quot;&lt;link rel=\&quot;stylesheet\&quot; href=\&quot;https://embed.calculoid.com/styles/main.css\&quot; /&gt;
+        <input type="hidden" name="data" value='{&quot;title&quot;: &quot;{{calc.name}}&quot;, &quot;html&quot;: &quot;&lt;link rel=\&quot;stylesheet\&quot; href=\&quot;https://embed.calculoid.com/styles/main.css\&quot; /&gt;
     &lt;script src=\&quot;https://embed.calculoid.com/scripts/combined.min.js\&quot;&gt;&lt;/script&gt;
-    &lt;div ng-app=\&quot;calculoid\&quot; ng-controller=\&quot;CalculoidMainCtrl\&quot; ng-init=\&quot;init({calcId:{{calc.id}},apiKey:&#39;{{user.apiKey}}&#39;{{embedShowTitleText}}{{embedShowDescriptionText}}})\&quot; ng-include=\&quot;load()\&quot;&gt;&lt;/div&gt;&quot;}">
+    &lt;div ng-app=\&quot;calculoid\&quot; ng-controller=\&quot;CalculoidMainCtrl\&quot; ng-init=\&quot;init({calcId:{{calc.id}},apiKey:&#39;{{user.apiKey}}&#39;{{embedShowTitleText}}{{embedShowDescriptionText}}})\&quot; ng-include=\&quot;load()\&quot;&gt;&lt;/div&gt;&quot;}'>
         <button type="submit" class="btn"><i class="fa fa-codepen"></i> Test embed code at CodePen</button>
         <a href="https://github.com/calculoidapp/calculoidapp.github.io/wiki/Embeding-of-Calculoid's-calculators" target="_blank" class="btn btn-default"><i class="fa fa-book"></i> Learn more about embed</a>
     </form>
 
     <span class="pull-right">
         Display calculator's:<br>
-        <label><input type="checkbox" ng-model="embedShowTitle" ng-change="showEmbedTitle(embedShowTitle)" ng-init="embedShowTitle=true"> Title</label><br>
-        <label><input type="checkbox" ng-model="embedShowDescription" ng-change="showEmbedDescription(embedShowDescription)" ng-init="embedShowDescription=true"> Description</label>
+        <label><input type="checkbox" ng-model="embedShowTitle" ng-change="showEmbedTitle(embedShowTitle)" ng-init="embedShowTitle=true"/> Title</label><br>
+        <label><input type="checkbox" ng-model="embedShowDescription" ng-change="showEmbedDescription(embedShowDescription)" ng-init="embedShowDescription=true"/> Description</label>
     </span>
 
 </div>

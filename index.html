@@ -11,13 +11,24 @@
   <meta name="keywords" content="calculator, calc, website, widget, joomla, drupal, wordpress">
   <meta name="viewport" content="width=device-width">
 
-  <link rel="stylesheet" href="styles/cd724f94.combined.min.css">
+  <!-- build:css styles/combined.min.css -->
+  <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
+  <link rel='stylesheet' href='/bower_components/textAngular/dist/textAngular.css'>
+  <link rel="stylesheet" href="bower_components/angular-loading-bar/src/loading-bar.css" />
+  <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
+  <link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css" />
+  <link rel="stylesheet" href="bower_components/angular-awesome-slider/dist/css/angular-awesome-slider.min.css" />
+  <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
+  <link rel="stylesheet" href="bower_components/angular-notify/angular-notify.css" />
+
+  <link rel="stylesheet" href="styles/themes.css" />
+  <link rel="stylesheet" href="styles/calculoid.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <!-- endbuild -->
 
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 
   <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
-
-  <script src="scripts/216cbcfb.combined.min.js"></script>
 
   <!--[if lte IE 8]>
   <script>
@@ -32,8 +43,8 @@
   </script>
   <![endif]-->
 
-
-<body id="ng-app" ng-app="calculoid" onmousemove="new_calc_alert()">
+</head>
+<body id="ng-app" ng-app="calculoid" onmousemove="new_calc_alert();">
 
 <!--[if lt IE 7]>
 <script src="bower_components/json3/lib/json3.min.js" ></script>
@@ -50,20 +61,20 @@
       </button>
 
       <a class="navbar-brand" href="#/">
-        <img src="images/Logo_Calculoid.svg" style="margin-top: 2px; height: 40px" alt="Calculoid logo">
+        <img src="images/Logo_Calculoid.svg" style="margin-top: 2px; height: 40px;" alt="Calculoid logo" />
       </a>
     </div>
 
     <div class="collapse navbar-collapse navbar-right" uib-collapse="navIsCollapsed">
       <ul class="nav navbar-nav visible-phone">
         <li class="first"><a href="http://calculoid.com/" class="first">Home</a></li>
-        <li><a href="http://calculoid.com/product">Product</a></li>
+        <li><a href="http://calculoid.com/product" >Product</a></li>
         <li><a href="http://calculoid.com/faq">FAQ</a></li>
         <li><a href="http://calculoid.com/solutions">Showcase</a></li>
-        <li><a href="http://calculoid.com/pricing">Pricing</a></li>
+        <li><a href="http://calculoid.com/pricing" >Pricing</a></li>
         <li class="active"><a href="#/calculators">Calculators</a></li>
         <li><a href="http://calculoid.com/blog">Blog</a></li>
-        <li><a href="http://calculoid.com/contacts">Contacts</a></li>
+        <li><a href="http://calculoid.com/contacts" >Contacts</a></li>
       </ul>
       <a class="ham-menu-btn" id="hamMenuBtn">
         <div class="ham-menu-close-div"></div>
@@ -76,15 +87,15 @@
 <div class="container-fluid view-container">
   <ul class="nav nav-pills ham-nav">
     <li class="first"><a href="http://calculoid.com/" class="first">Home</a></li>
-    <li><a href="http://calculoid.com/product">Product</a></li>
+    <li><a href="http://calculoid.com/product" >Product</a></li>
     <li><a href="http://calculoid.com/faq">FAQ</a></li>
     <li><a href="http://calculoid.com/solutions">Showcase</a></li>
-    <li><a href="http://calculoid.com/pricing">Pricing</a></li>
+    <li><a href="http://calculoid.com/pricing" >Pricing</a></li>
     <li class="active"><a href="#/calculators">Calculators</a></li>
     <li><a href="http://calculoid.com/blog">Blog</a></li>
-    <li><a href="http://calculoid.com/contacts">Contacts</a></li>
+    <li><a href="http://calculoid.com/contacts" >Contacts</a></li>
   </ul>
-  <div ng-view="" class="view-frame fade-view" autoscroll="true"></div>
+  <div ng-view class="view-frame fade-view" autoscroll="true"></div>
 </div>
 <!--<footer class="container-fluid">
     <div class="navbar navbar-nav">
@@ -151,9 +162,39 @@
 <!-- endbower -->
 <script src="bower_components/angular-awesome-slider/dist/angular-awesome-slider.min.js"></script>
 <script src="bower_components/angular-gridster/src/angular-gridster.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/calc-list.js"></script>
+<script src="scripts/controllers/calc-detail.js"></script>
+<script src="scripts/controllers/calc-report.js"></script>
+<script src="scripts/controllers/contact.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/navigation.js"></script>
+<script src="scripts/controllers/sign-in.js"></script>
+<script src="scripts/controllers/showcase.js"></script>
+<script src="scripts/controllers/password-reset.js"></script>
+<script src="scripts/controllers/submissions.js"></script>
+<script src="scripts/controllers/webhooks.js"></script>
+<script src="scripts/controllers/profile.js"></script>
+<script src="scripts/controllers/toolbar.js"></script>
+<script src="scripts/controllers/users.js"></script>
+<script src="scripts/controllers/stats.js"></script>
+<script src="scripts/services/calc.js"></script>
+<script src="scripts/services/field.js"></script>
+<script src="scripts/services/user.js"></script>
+<script src="scripts/services/chart.js"></script>
+<script src="scripts/services/http-error-handler.js"></script>
+<script src="scripts/filters/order-object-by.js"></script>
+<script src="scripts/filters/format-number.js"></script>
+<script src="scripts/directives/formula.js"></script>
+<script src="scripts/directives/google-plus-signin.js"></script>
+<script src="scripts/directives/textarea-editor.js"></script>
+<script src="scripts/directives/flexicolor.js"></script>
+<script src="scripts/vendor/js-expression-eval.js"></script>
+<!-- endbuild -->
+
 <script src="scripts/jquery-3.2.1.min.js"></script>
 <script src="scripts/noangular.js"></script>
-<!-- endbuild -->
+<script src="https://checkout.stripe.com/checkout.js"></script>
 
 <script>
   document.getElementById('hamMenuBtn').addEventListener('click', function () {
@@ -193,4 +234,7 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
   })();
 </script>
 
-<img ng-src="http://m.calculoid.com/mtracking.gif">
+<img ng-src="http://m.calculoid.com/mtracking.gif" />
+</body>
+
+</html>
