@@ -100,6 +100,7 @@ function formula_update() {
             var ind = searchStringInArray(matches[i],lis);
             if(lis[ind]){
                 editor_values.push(lis[ind]);
+                //.replace(/ [\(]+ /g, "&nbsp;<div class='brackets'>(&nbsp;").replace(/ [\)]+ /g, "&nbsp;)</div>&nbsp;")
                 print = print.replace(new RegExp(matches[i], 'g'), "<a contenteditable='false' class='textEditorBtn' onclick='deleteElement(this)'>"+lis[ind].split(" = ")[1]+"<span id='delete_it'></span></a>&nbsp;");
             }
         }
@@ -109,7 +110,7 @@ function formula_update() {
     ang_val = ang_val.replace(/&nbsp;/ig,"").replace(/&lt;/ig,"<").replace(/&gt;/ig,">");
     bubbleSort(editor_values);
     for (i = 0; i < editor_values.length; i++) {
-        ang_val = ang_val.replace(new RegExp(editor_values[i].split(" = ")[1], 'g'), editor_values[i].split(" = ")[0]);
+        ang_val = ang_val.replace(new RegExp(editor_values[i].split(" = ")[1].replace(/[\+]+/g,'[\+]+').replace(/[^[\\+]\+]+[\[]+/g,'[\(]+').replace(/[^[\\+]\+]+[\]]+/g,'[\)]+').replace(/[\{]+/g,'[\(]+').replace(/[\}]+/g,'[\)]+').replace(/[\(]+/g,'[\(]+').replace(/[\)]+/g,'[\)]+').replace(/[\?]+/g,'[\?]+').replace(/[\*]+/g,'[\*]+').replace(/[\$]+/g,'[\$]+').replace(/[\^]+/g,'[\^]+').replace(/[\,]+/g,'[\,]+').replace(/[\!]+/g,'[\!]+').replace(/[\|]+/g,'[\|]+').replace(/[\¨]+/g,'[\¨]+').replace(/[\']+/g,'[\']+').replace(/[\;]+/g,'[\;]+').replace(/[\%]+/g,'[\%]+').replace(/[\-]+/g,'[\-]+').replace(/[\.]+/g,'[\.]+'), 'gi'), editor_values[i].split(" = ")[0]);
     }
     var scope = angular.element(document.querySelector("#editor-tools")).scope();
     scope.activeField.value = ang_val;

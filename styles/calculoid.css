@@ -1264,3 +1264,9 @@ label:hover em, label:hover small {
   background: #e05743;
   color: #ffffff;
 }
+
+.brackets {
+  background-color: rgba(0, 255, 0, 0.1);
+  border-radius: 5px;
+  padding: 0 5px;
+}

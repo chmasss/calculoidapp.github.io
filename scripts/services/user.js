@@ -113,7 +113,7 @@ calculoidServices.factory('User', ['$rootScope', '$resource', function($rootScop
 
 			if (typeof data.token !== 'undefined') {
 				ga('send', 'event', 'user', 'register', data.name);
-				window.location.href = '/?#/my/calculators';
+				window.location.href = '/#/new';
 			}
 
 			$rootScope.$broadcast('user:updated', user);
