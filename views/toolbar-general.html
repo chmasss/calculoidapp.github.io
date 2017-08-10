@@ -21,9 +21,10 @@
     </li>
 </ul>
 
-<div class="col-md-12 toolbar-content" ng-include="displayToolbarTabDetails()" id="{{toolbar.tab}}"></div>
+<div ng-if="user.logged=='in'" class="col-md-12 toolbar-content" ng-include="displayToolbarTabDetails()" id="{{toolbar.tab}}"></div>
+<div ng-if="user.logged=='out'" class="col-md-12 toolbar-content-logged-out" ng-include="displayToolbarTabDetails()" id="{{toolbar.tab}}"></div>
 
-<div class="toolbar-nav-bg"></div>
+<div ng-if="user.logged=='in'" class="toolbar-nav-bg"></div>
 
 <ul class="nav navbar-nav navbar-head">
     <li ng-class="activeTab('details')">
@@ -54,4 +55,9 @@
 <div ng-if="hasFields()" ng-init="loadToolbarTab('details')">
 </div>
 
-<a href="http://www.calculoid.com/pricing" class="btn btn-link upgrade-btn ng-scope" style="font-size: 16px;"><i class="fa fa-cloud-upload" style="font-size: 25px;padding: 5px;"></i>Upgrade your subscription now</a>
+<div ng-if="user.logged=='in'">
+<a href="http://www.calculoid.com/pricing?F263={{user.email}}" class="btn btn-link upgrade-btn ng-scope" style="font-size: 16px;"><i class="fa fa-cloud-upload" style="font-size: 25px;padding: 5px;"></i>Upgrade your subscription now</a>
+</div>
+<div ng-if="user.logged=='out'">
+    <a href="/#/signup" class="btn btn-link upgrade-btn ng-scope" style="font-size: 16px;">Do you want a similar calculator? Sing up Free</a>
+</div>

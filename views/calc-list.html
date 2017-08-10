@@ -46,7 +46,7 @@
 
     <div class="row calc-list">
         <div ng-repeat="calc in calcList.calcs" class="col-xs-12 col-md-6 calc-item finished-{{calc.finished}}">
-            <h4 class="calc-item-heading">
+            <h3 class="calc-item-heading">
                 <span ng-if="(user.logged === 'in') && calc.finished == '0'">
                     <abbr title="Not finished / Not publicly visible">
                         <i class="fa fa-eye-slash text-muted"></i>
@@ -65,7 +65,7 @@
                 <a href="#/calculator/{{calc.id}}">
                     {{calc.name}}
                 </a>
-            </h4>
+            </h3>
 
 
 

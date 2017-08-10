@@ -35,7 +35,8 @@
 		<input type="hidden" name="currency_code" value="{{field.params.currency}}" />
 		<input type="hidden" name="amount" value="{{getFieldValue(field.params.priceField, 2)}}" />
 		<input type="hidden" name="email" value="{{customer.email}}" />
-		<input type="hidden" name="return" value="http://api.calculoid.com/payment/done" />
+		<input ng-if="field.params.redirect!=''" type="hidden" name="return" value="{{field.params.redirect}}" />
+		<input ng-if="field.params.redirect==''" type="hidden" name="return" value="{{currentUrl}}" />
 		<input type="hidden" name="cancel_return" value="{{currentUrl}}" />
 	</form>
 </div>

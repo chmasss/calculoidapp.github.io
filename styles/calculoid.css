@@ -3,13 +3,14 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
+  font-size: 15px;
   background: #e6e6e6;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
   color: #50596f;
@@ -17,8 +18,14 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -1px;
   line-height: 1.2;
 }
+h1 {
+  font-size: 36px;
+}
+h2 {
+  font-size: 31px;
+}
 h3 {
-  font-size: 30px;
+  font-size: 25.5px;
 }
 h4 {
   font-size: 22px;
@@ -43,7 +50,7 @@ a:hover {
 }
 
 p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 28px;
   color: #666;
 }
@@ -174,7 +181,7 @@ h4 {
 }
 
 .navbar-nav > li > a {
-  font-size: 13px;
+  font-size: 14.5px;
 }
 
 .navbar-default {
@@ -191,7 +198,7 @@ h4 {
   height: 55px;
   line-height: 55px;
   padding: 0 10px;
-  font-size: 14px;
+  font-size: 14.5px;
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -253,7 +260,7 @@ h4 {
   top: 42px;
   left: 70px;
   color: #7F7272;
-  font-size: 12px;
+  font-size: 13.5px;
   width: 200px;
 }
 
@@ -324,10 +331,21 @@ img.avatar {
   padding-bottom: 25px;
 }
 
+.toolbar-content-logged-out {
+  height: calc(100% - 49px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
 @media screen and (max-width: 991px) {
   .toolbar-content {
     height: auto;
     padding-top: 25px;
+  }
+  .calculoid-editor {
+    margin-top: -15px;
   }
 }
 
@@ -549,7 +567,7 @@ blockquote p:after {
 
 cite {
   font-style: italic;
-  font-size: 12px;
+  font-size: 13.5px;
   color: #969595;
 }
 
@@ -690,7 +708,7 @@ th.user-avatar {
 footer {
   margin: 50px 0 0 0;
   color: #888;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 24px;
   padding: 20px 0 0 0 ;
   border-top: 1px solid #ddd;
@@ -806,6 +824,7 @@ footer a:hover {
   .editor-form-field{
     padding: 0;
     padding-top: 20px;
+    width: 100%;
   }
 }
 

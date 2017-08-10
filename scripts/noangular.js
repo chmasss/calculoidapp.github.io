@@ -18,6 +18,16 @@ function bubbleSort(a) {
         }
     } while (swapped);
 }
+function setCursorToEnd(ele)
+{
+    var range = document.createRange();
+    var sel = window.getSelection();
+    range.setStart(ele, 1);
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
+    ele.focus();
+}
 function placeCaretAtEnd(el) {
     el.focus();
     if (typeof window.getSelection != "undefined"
@@ -107,7 +117,7 @@ function formula_update() {
         document.getElementById("af-value").innerHTML = print;
     }
     var ang_val = document.getElementById("af-value").innerHTML.replace(/(<([^>]+)>)/ig,"");
-    ang_val = ang_val.replace(/&nbsp;/ig,"").replace(/&lt;/ig,"<").replace(/&gt;/ig,">");
+    ang_val = ang_val.replace(/&nbsp;/ig,"").replace(/&amp;/ig,"&").replace(/&lt;/ig,"<").replace(/&gt;/ig,">");
     bubbleSort(editor_values);
     for (i = 0; i < editor_values.length; i++) {
         ang_val = ang_val.replace(new RegExp(editor_values[i].split(" = ")[1].replace(/[\+]+/g,'[\+]+').replace(/[^[\\+]\+]+[\[]+/g,'[\(]+').replace(/[^[\\+]\+]+[\]]+/g,'[\)]+').replace(/[\{]+/g,'[\(]+').replace(/[\}]+/g,'[\)]+').replace(/[\(]+/g,'[\(]+').replace(/[\)]+/g,'[\)]+').replace(/[\?]+/g,'[\?]+').replace(/[\*]+/g,'[\*]+').replace(/[\$]+/g,'[\$]+').replace(/[\^]+/g,'[\^]+').replace(/[\,]+/g,'[\,]+').replace(/[\!]+/g,'[\!]+').replace(/[\|]+/g,'[\|]+').replace(/[\¨]+/g,'[\¨]+').replace(/[\']+/g,'[\']+').replace(/[\;]+/g,'[\;]+').replace(/[\%]+/g,'[\%]+').replace(/[\-]+/g,'[\-]+').replace(/[\.]+/g,'[\.]+'), 'gi'), editor_values[i].split(" = ")[0]);
@@ -122,6 +132,7 @@ function formula_start() {
         document.getElementById("af-value").innerHTML = "&nbsp;";
     }
     formula_update();
+    setCursorToEnd($('#af-value').get(0));
 }
 function deleteElement(n){
     n.parentNode.removeChild(n);
