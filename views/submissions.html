@@ -53,81 +53,81 @@
             <h3 ng-if="submission.id">Submission</h3>
             <table class="table table-bordered">
                 <tr ng-if="submission.id">
-                    <th>Submission ID</th>
-                    <td>{{submission.id}}</td>
-                </tr>
+                    <th>Submission ID
+                    <td>{{submission.id}}
+                
                 <tr ng-if="submission.date">
-                    <th>Submitted at</th>
-                    <td>{{submission.date}} <small>(<span am-time-ago="submission.date"></span>)</small></td>
-                </tr>
+                    <th>Submitted at
+                    <td>{{submission.date}} <small>(<span am-time-ago="submission.date"></span>)</small>
+                
                 <tr ng-if="submission.email">
-                    <th>Submitted by</th>
-                    <td><a href="mailto:{{submission.email}}">{{submission.email}}</a></td>
-                </tr>
+                    <th>Submitted by
+                    <td><a href="mailto:{{submission.email}}">{{submission.email}}</a>
+                
                 <tr ng-if="submission.detail.url">
-                    <th>Sent from</th>
-                    <td><a href="{{submission.detail.url}}" target="_blank">{{submission.detail.url}}</a></td>
-                </tr>
+                    <th>Sent from
+                    <td><a href="{{submission.detail.url}}" target="_blank">{{submission.detail.url}}</a>
+                
                 <tr ng-if="submission.detail.name">
-                    <th>Calculator</th>
-                    <td>{{submission.detail.name}}</td>
-                </tr>
+                    <th>Calculator
+                    <td>{{submission.detail.name}}
+                
                 <tr ng-if="submission.detail.comment">
-                    <th>Comment</th>
-                    <td>{{submission.detail.comment}}</td>
-                </tr>
+                    <th>Comment
+                    <td>{{submission.detail.comment}}
+                
             </table>
 
             <h3 ng-if="submission.detail.fields">Fields</h3>
             <table class="table table-bordered">
                 <tr ng-if="submission.detail.fields" ng-repeat="field in submission.detail.fields">
-                    <th>{{field.name}}</th>
-                    <td>{{field.prefix}}{{field.value}}{{field.postfix}}</td>
-                </tr>
+                    <th>{{field.name}}
+                    <td>{{field.prefix}}{{field.value}}{{field.postfix}}
+                
             </table>
 
             <h3 ng-if="submission.detail.payment">Payment</h3>
             <table class="table table-bordered">
                 <tr ng-if="submission.detail.payment.price">
-                    <th>Price</th>
-                    <td>{{submission.detail.payment.price}} {{submission.detail.payment.currency}}</td>
-                </tr>
+                    <th>Price
+                    <td>{{submission.detail.payment.price}} {{submission.detail.payment.currency}}
+                
                 <tr ng-if="submission.detail.payment.status">
-                    <th>Status</th>
-                    <td>{{submission.detail.payment.status}}</td>
-                </tr>
+                    <th>Status
+                    <td>{{submission.detail.payment.status}}
+                
                 <tr ng-if="submission.detail.payment.info">
-                    <th>Payment info</th>
-                    <td>{{submission.detail.payment.info}}</td>
-                </tr>
+                    <th>Payment info
+                    <td>{{submission.detail.payment.info}}
+                
                 <tr ng-if="submission.detail.payment.paypalEmail">
-                    <th>PayPal email</th>
-                    <td>{{submission.detail.payment.paypalEmail}}</td>
-                </tr>
+                    <th>PayPal email
+                    <td>{{submission.detail.payment.paypalEmail}}
+                
                 <tr ng-if="submission.detail.payment.paymentGate">
-                    <th>Payment Gate</th>
-                    <td>{{submission.detail.payment.paymentGate}}</td>
-                </tr>
+                    <th>Payment Gate
+                    <td>{{submission.detail.payment.paymentGate}}
+                
             </table>
 
             <h3 ng-if="submission.detail.payment">Payment details</h3>
             <table class="table table-bordered">
-                </tr>
+                
                 <tr ng-repeat="(key, value) in submission.detail.payment.details" ng-if="value && key != 'refunds' && key != 'fraud_details' && key != 'metadata' && key != 'object' && key != 'source'">
                     <th>
                         {{key}}
-                    </th>
+                    
                     <td ng-if="key != 'card' && key != 'source'">
                         {{value}}
-                    </td>
+                    
                     <td ng-if="key == 'card'">
                         <ul>
                             <li ng-repeat="(objectKey, objectValue) in value" ng-if="objectValue">
                                 <strong>{{objectKey}}:</strong> {{objectValue}}
                             </li>
                         </ul>
-                    </td>
-                </tr>
+                    
+                
             </table>
 
             <i>{{submission.detailStatus}}</i>

@@ -12,12 +12,12 @@
         </div>
         <div ng-if="user.group == '2' && user.logged == 'in'">
             <a href="http://www.calculoid.com/pricing" class="btn btn-link">
-                <i class="fa fa-cloud-upload" style="font-size: 25px;padding: 5px;"></i> Upgrade your subscription to copy this calculator
+                <i class="fa fa-cloud-upload" style="font-size: 25px;padding: 5px"></i> Upgrade your subscription to copy this calculator
             </a>
         </div>
 
         <span ng-if="calc.canEdit">(You are already author of this calc)</span>
-            <button ng-if="user.logged != 'in'" disabled="disabled" class="btn btn-default">
+            <button ng-if="user.logged != 'in'" disabled class="btn btn-default">
                 <i class="fa fa-files-o"></i> Copy
             </button>
     </div>

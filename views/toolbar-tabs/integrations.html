@@ -5,6 +5,9 @@
                 <li ng-class="(activeIntegration == 'webhook') ? 'active' : ''">
                     <a ng-click="activeIntegration = 'webhook'">Webhook</a>
                 </li>
+                <li ng-class="(activeIntegration == 'mautic') ? 'active' : ''">
+                    <a ng-click="activeIntegration = 'mautic'">Mautic</a>
+                </li>
                 <li ng-class="(activeIntegration == 'redmine') ? 'active' : ''">
                     <a ng-click="activeIntegration = 'redmine'; loadRedmineCustomFields(calc, 'issue')">Redmine</a>
                 </li>
@@ -18,7 +21,7 @@
             <i class="fa fa-paper-plane-o"></i> View Webhook Log
         </a>
     </div>
-    <p style="text-align: center;">
+    <p style="text-align: center">
         <br>
         <a ng-class="(activeIntegration == 'redmine' || activeIntegration == 'easyredmine-crm') ? 'ng-show' : 'ng-hide'" ng-model="Avariables" ng-click="Avariables = !Avariables" class="btn btn-link">Available variables</a>
     </p>

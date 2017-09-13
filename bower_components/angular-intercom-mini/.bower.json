@@ -1,0 +1,36 @@
+{
+  "name": "angular-intercom-mini",
+  "version": "0.1.0",
+  "homepage": "https://github.com/maxiperezc/angular-intercom-mini",
+  "authors": [
+    "Maximiliano Perez Coto <maxiperezc@gmail.com>"
+  ],
+  "description": "Service to install Intercom using Angular.js framework",
+  "main": "./intercom.js",
+  "keywords": [
+    "service",
+    "intercom",
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "LICENSE",
+    "README.md",
+    "example.html"
+  ],
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "1d94f832d6fb5226685efa6a6bffb17980ec21c1"
+  },
+  "_source": "https://github.com/maxiperezc/angular-intercom-mini.git",
+  "_target": "^0.1.0",
+  "_originalSource": "angular-intercom-mini",
+  "_direct": true
+}

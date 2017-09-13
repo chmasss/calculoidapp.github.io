@@ -43,7 +43,7 @@
         </a>
     </li>
     <li ng-class="save-btn">
-        <button ng-if="calc.canEdit" type="button" class="btn btn-info save pull-right" ng-click="saveCalc();toolbarClose();" style="margin-left: 25px; margin-right: 20px;">
+        <button ng-if="calc.canEdit" type="button" class="btn btn-info save pull-right" ng-click="saveCalc();toolbarClose();" style="margin-left: 25px; margin-right: 20px">
             {{saveStatus}}
         </button>
     </li>
@@ -56,8 +56,8 @@
 </div>
 
 <div ng-if="user.logged=='in'">
-<a href="http://www.calculoid.com/pricing?F263={{user.email}}" class="btn btn-link upgrade-btn ng-scope" style="font-size: 16px;"><i class="fa fa-cloud-upload" style="font-size: 25px;padding: 5px;"></i>Upgrade your subscription now</a>
+<a href="http://www.calculoid.com/pricing?F263={{user.email}}" class="btn btn-link upgrade-btn ng-scope" style="font-size: 16px"><i class="fa fa-cloud-upload" style="font-size: 25px;padding: 5px"></i>Upgrade your subscription now</a>
 </div>
 <div ng-if="user.logged=='out'">
-    <a href="/#/signup" class="btn btn-link upgrade-btn ng-scope" style="font-size: 16px;">Do you want a similar calculator? Sing up Free</a>
+    <a href="/#/signup" class="btn btn-link upgrade-btn ng-scope" style="font-size: 16px">Do you want a similar calculator? Sing up Free</a>
 </div>

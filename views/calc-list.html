@@ -21,8 +21,8 @@
                 </div>
             </div>
             <div class="search col-xs-4">
-                <a onclick="new_calc_edit = true;" ng-click="create()" class="btn btn btn-primary ng-binding pull-right hidden-phone">
-                    <i class="fa fa-plus-circle "></i> New Calculator
+                <a onclick="new_calc_edit = true" ng-click="create()" class="btn btn btn-primary ng-binding pull-right hidden-phone">
+                    <i class="fa fa-plus-circle"></i> New Calculator
                 </a>
             </div>
         </div>
@@ -73,7 +73,7 @@
                 <span>by {{calc.authorName}}</span>
                 <span ng-if="calc.rating">&nbsp;|
                     <abbr title="{{calc.rating}} out of 5">
-                        <uib-rating class="rating" ng-model="calc.rating" readonly="true" state-on="'fa fa-star'" state-off="'fa fa-star-o'"></uib-rating>
+                        <uib-rating class="rating" ng-model="calc.rating" readonly state-on="'fa fa-star'" state-off="'fa fa-star-o'"></uib-rating>
                     </abbr>
                     <span>{{calc.ratingCount}}x</span>
                 </span>
