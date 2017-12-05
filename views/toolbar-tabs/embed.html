@@ -3,24 +3,37 @@
         Your calculator is hidden from the world right now. Take your time to build it. Once you finish your work, mark the calculator as finished in <a ng-click="loadToolbarTab('edit-calc')">the configuration</a>. That will publish it to the list of calculators and it will be possible to embed it.
     </uib-alert>
     <div ng-if="calc.id">
-        <p>Use <a href="http://www.easyjoomla.org/list-all-products?keyword=calculoid&limitstart=0&custom_parent_id=0&option=com_virtuemart&search=true&view=category" target="_blank">Joomla plugin</a>, <a href="https://wordpress.org/plugins/calculoid-calculators-builder/" target="_blank">WordPress plugin</a> or insert following 3 rows of code into your HTML web page. It will embed this calculator, which has ID = <span class="highlight-red">{{calc.id}}</span>.</p>
+        <p>Use <a href="http://www.easyjoomla.org/list-all-products?keyword=calculoid&limitstart=0&custom_parent_id=0&option=com_virtuemart&search=true&view=category" target="_blank">Joomla plugin</a>, <a href="https://wordpress.org/plugins/calculoid-calculators-builder/" target="_blank">WordPress plugin</a> or insert one of following codes into your HTML web page. It will embed this calculator, which has ID = <span class="highlight-red">{{calc.id}}</span>.</p>
         <pre>&lt;link rel="stylesheet" href="https://embed.calculoid.com/styles/main.css" /&gt;
 &lt;script src="https://embed.calculoid.com/scripts/combined.min.js"&gt;&lt;/script&gt;
 &lt;div ng-app="calculoid" ng-controller="CalculoidMainCtrl" ng-init="init({calcId:{{calc.id}},apiKey:'{{user.apiKey}}'{{embedShowTitleText}}{{embedShowDescriptionText}}})" ng-include="load()"&gt;&lt;/div&gt;</pre>
+        <form action="https://codepen.io/pen/define" method="POST" target="_blank" class="col-md-6">
+            <input type="hidden" name="data" value="{&quot;title&quot;: &quot;{{calc.name}}&quot;, &quot;html&quot;: &quot;&lt;link rel=\&quot;stylesheet\&quot; href=\&quot;https://embed.calculoid.com/styles/main.css\&quot; /&gt;
+    &lt;script src=\&quot;https://embed.calculoid.com/scripts/combined.min.js\&quot;&gt;&lt;/script&gt;
+    &lt;div ng-app=\&quot;calculoid\&quot; ng-controller=\&quot;CalculoidMainCtrl\&quot; ng-init=\&quot;init({calcId:{{calc.id}},apiKey:&#39;{{user.apiKey}}&#39;{{embedShowTitleText}}{{embedShowDescriptionText}}})\&quot; ng-include=\&quot;load()\&quot;&gt;&lt;/div&gt;&quot;}">
+            <button type="submit" class="btn"><i class="fa fa-codepen"></i> Test code at CodePen</button>
+        </form>
+        <br>
+        <div style="margin: 50px 0; position: relative">
+            <h3>Or</h3>
+            <span style="position: absolute;right: 0;margin-top: -60px">
+                Display calculator's:<br>
+                <label><input type="checkbox" ng-model="embedShowTitle" ng-change="showEmbedTitle(embedShowTitle)" ng-init="embedShowTitle=true"> Title</label><br>
+                <label><input type="checkbox" ng-model="embedShowDescription" ng-change="showEmbedDescription(embedShowDescription)" ng-init="embedShowDescription=true"> Description</label>
+            </span>
+        </div>
+
+        <pre>
+&lt;script type="text/javascript"&gt;var eventMethod=window.addEventListener?"addEventListener":"attachEvent",eventer=window[eventMethod],messageEvent="attachEvent"==eventMethod?"onmessage":"message";eventer(messageEvent,function(e){if(e.origin=='https://embed.calculoid.com'){if(e.data.startsWith("height;")){document.getElementById("calc-{{calc.id}}").style.height=e.data.split("height;")[1]+"px"}else if(e.data.startsWith("url;")){window.location.href=e.data.split("url;")[1]}}},!1)&lt;/script&gt;
+&lt;iframe id="calc-{{calc.id}}" src="https://embed.calculoid.com/?calcId={{calc.id}}&apiKey={{user.apiKey}}&showTitle={{embedShowTitle}}&showDescription={{embedShowDescription}}" scrolling="no" style="width: 100%; border: none;"&gt;&lt;/iframe&gt;</pre>
     </div>
 
     <form action="https://codepen.io/pen/define" method="POST" target="_blank" class="col-md-6">
-        <input type="hidden" name="data" value="{&quot;title&quot;: &quot;{{calc.name}}&quot;, &quot;html&quot;: &quot;&lt;link rel=\&quot;stylesheet\&quot; href=\&quot;https://embed.calculoid.com/styles/main.css\&quot; /&gt;
-    &lt;script src=\&quot;https://embed.calculoid.com/scripts/combined.min.js\&quot;&gt;&lt;/script&gt;
-    &lt;div ng-app=\&quot;calculoid\&quot; ng-controller=\&quot;CalculoidMainCtrl\&quot; ng-init=\&quot;init({calcId:{{calc.id}},apiKey:&#39;{{user.apiKey}}&#39;{{embedShowTitleText}}{{embedShowDescriptionText}}})\&quot; ng-include=\&quot;load()\&quot;&gt;&lt;/div&gt;&quot;}">
-        <button type="submit" class="btn"><i class="fa fa-codepen"></i> Test embed code at CodePen</button>
-        <a href="https://github.com/calculoidapp/calculoidapp.github.io/wiki/Embeding-of-Calculoid's-calculators" target="_blank" class="btn btn-default"><i class="fa fa-book"></i> Learn more about embed</a>
+        <input type="hidden" name="data" value="{&quot;title&quot;: &quot;{{calc.name}}&quot;, &quot;html&quot;: &quot;&lt;script type=\&quot;text/javascript\&quot;&gt;var eventMethod=window.addEventListener?\&quot;addEventListener\&quot;:\&quot;attachEvent\&quot;,eventer=window[eventMethod],messageEvent=\&quot;attachEvent\&quot;==eventMethod?\&quot;onmessage\&quot;:\&quot;message\&quot;;eventer(messageEvent,function(e){if(e.origin==&#39;https://embed.calculoid.com&#39;){if(e.data.startsWith(\&quot;height;\&quot;)){document.getElementById(\&quot;calc-{{calc.id}}\&quot;).style.height=e.data.split(\&quot;height;\&quot;)[1]+\&quot;px\&quot;}else if(e.data.startsWith(\&quot;url;\&quot;)){window.location.href=e.data.split(\&quot;url;\&quot;)[1]}}},!1)&lt;/script&gt;
+&lt;iframe id=\&quot;calc-{{calc.id}}\&quot; src=\&quot;https://embed.calculoid.com/?calcId={{calc.id}}&apiKey={{user.apiKey}}&showTitle={{embedShowTitle}}&showDescription={{embedShowDescription}}\&quot; scrolling=\&quot;no\&quot; style=\&quot;width: 100%; border: none;\&quot;&gt;&lt;/iframe&gt;&quot;}">
+        <button type="submit" class="btn"><i class="fa fa-codepen"></i> Test code at CodePen</button>
     </form>
 
-    <span class="pull-right">
-        Display calculator's:<br>
-        <label><input type="checkbox" ng-model="embedShowTitle" ng-change="showEmbedTitle(embedShowTitle)" ng-init="embedShowTitle=true"> Title</label><br>
-        <label><input type="checkbox" ng-model="embedShowDescription" ng-change="showEmbedDescription(embedShowDescription)" ng-init="embedShowDescription=true"> Description</label>
-    </span>
+    <a href="https://github.com/calculoidapp/calculoidapp.github.io/wiki/Embeding-of-Calculoid's-calculators" target="_blank" class="btn btn-default pull-right"><i class="fa fa-book"></i> Learn more about embed</a>
 
 </div>

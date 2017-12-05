@@ -1,15 +1,18 @@
 <div class="row">
     <div class="col-md-12">
-        <label for="inputMauticUrl">Mautic URL</label>
+        <label for="inputMauticUrl">Mautic URL<small>
+
+        </small></label>
         <input type="url" ng-model="calc.params.mauticUrl" placeholder="http://" class="form-control" id="inputMauticUrl" onblur="checkURL(this)">
     </div>
     <div class="col-md-12">
-        <label for="inputmauticFormId">Mautic Form ID</label>
+        <label for="inputmauticFormId">Mautic Form ID<small>
+
+        </small></label>
         <input type="text" ng-model="calc.params.mauticFormId" class="form-control" id="inputmauticFormId">
     </div>
     <div class="col-md-12">
         <h3>Field mapping</h3>
-        <p>Assign the mautic field names to these outputs.</p>
             <div class="animate-repeat" ng-repeat="(fieldid, fielddata) in calc.fields">
                 <div ng-if="fielddata.type!='payment' && fielddata.type!='html'&& fielddata.type!='email'">
                     <label ng-for="inputmautic{{fieldid}}">{{fielddata.name}}</label>

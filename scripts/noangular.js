@@ -45,33 +45,6 @@ function placeCaretAtEnd(el) {
         textRange.select();
     }
 }
-function surroundSelection(this_btn) {
-    var textBefore = this_btn.getAttribute("data-textBefore");
-    var textAfter = this_btn.getAttribute("data-textAfter");
-    if (window.getSelection) {
-        var sel = window.getSelection();
-        if(sel.baseNode.parentNode.id == "af-value") {
-            if (sel.rangeCount > 0) {
-                var range = sel.getRangeAt(0);
-                var startNode = range.startContainer, startOffset = range.startOffset;
-                var boundaryRange = range.cloneRange();
-                var startTextNode = document.createTextNode(textBefore);
-                var endTextNode = document.createTextNode(textAfter);
-                boundaryRange.collapse(false);
-                boundaryRange.insertNode(endTextNode);
-                boundaryRange.setStart(startNode, startOffset);
-                boundaryRange.collapse(true);
-                boundaryRange.insertNode(startTextNode);
-                range.setStartAfter(startTextNode);
-                range.setEndBefore(endTextNode);
-                sel.removeAllRanges();
-                sel.addRange(range);
-                formula_update();
-            }
-        }
-    }
-    placeCaretAtEnd(document.getElementById("af-value"));
-}
 function show_names_of_fields() {
     var scope = angular.element(document.querySelector("#editor-tools")).scope();
     var x = scope.calc.fields;
@@ -120,10 +93,34 @@ function formula_update() {
     ang_val = ang_val.replace(/&nbsp;/ig,"").replace(/&amp;/ig,"&").replace(/&lt;/ig,"<").replace(/&gt;/ig,">");
     bubbleSort(editor_values);
     for (i = 0; i < editor_values.length; i++) {
-        ang_val = ang_val.replace(new RegExp(editor_values[i].split(" = ")[1].replace(/[\+]+/g,'[\+]+').replace(/[^[\\+]\+]+[\[]+/g,'[\(]+').replace(/[^[\\+]\+]+[\]]+/g,'[\)]+').replace(/[\{]+/g,'[\(]+').replace(/[\}]+/g,'[\)]+').replace(/[\(]+/g,'[\(]+').replace(/[\)]+/g,'[\)]+').replace(/[\?]+/g,'[\?]+').replace(/[\*]+/g,'[\*]+').replace(/[\$]+/g,'[\$]+').replace(/[\^]+/g,'[\^]+').replace(/[\,]+/g,'[\,]+').replace(/[\!]+/g,'[\!]+').replace(/[\|]+/g,'[\|]+').replace(/[\¨]+/g,'[\¨]+').replace(/[\']+/g,'[\']+').replace(/[\;]+/g,'[\;]+').replace(/[\%]+/g,'[\%]+').replace(/[\-]+/g,'[\-]+').replace(/[\.]+/g,'[\.]+'), 'gi'), editor_values[i].split(" = ")[0]);
+        ang_val = ang_val.replace(new RegExp(editor_values[i].split(" = ")[1].replace(/[\+]+/g,'[\+]+').replace(/[^[\\+]\+]+[\[]+/g,'[\(]+').replace(/[^[\\+]\+]+[\]]+/g,'[\)]+').replace(/[\{]+/g,'[\(]+').replace(/[\}]+/g,'[\)]+').replace(/[\(]+/g,'[\(]+').replace(/[\)]+/g,'[\)]+').replace(/[\?]+/g,'[\?]+').replace(/[\*]+/g,'[\*]+').replace(/[\$]+/g,'[\$]+').replace(/[\^]+/g,'[\^]+').replace(/[\,]+/g,'[\,]+').replace(/[\!]+/g,'[\!]+').replace(/[\|]+/g,'[\|]+').replace(/[\ï¿½]+/g,'[\ï¿½]+').replace(/[\']+/g,'[\']+').replace(/[\;]+/g,'[\;]+').replace(/[\%]+/g,'[\%]+').replace(/[\-]+/g,'[\-]+').replace(/[\.]+/g,'[\.]+'), 'gi'), editor_values[i].split(" = ")[0]);
     }
     var scope = angular.element(document.querySelector("#editor-tools")).scope();
     scope.activeField.value = ang_val;
+}
+function surroundSelection(this_btn) {
+    document.getElementById("af-value").focus();
+    surroundSelectionWork(this_btn.getAttribute("data-textBefore"), this_btn.getAttribute("data-textAfter"))
+}
+function surroundSelectionWork(textBefore, textAfter) {
+    if (window.getSelection) {
+        var sel = window.getSelection();
+        if (sel.rangeCount > 0) {
+            var range = sel.getRangeAt(0);
+            var startNode = range.startContainer, startOffset = range.startOffset;
+            var boundaryRange = range.cloneRange();
+            var startTextNode = document.createTextNode(textBefore);
+            var endTextNode = document.createTextNode(textAfter);
+            boundaryRange.collapse(false);
+            boundaryRange.insertNode(endTextNode);
+            boundaryRange.setStart(startNode, startOffset);
+            boundaryRange.collapse(true);
+            boundaryRange.insertNode(startTextNode);
+
+            formula_update();
+            placeCaretAtEnd(document.getElementById("af-value"));
+        }
+    }
 }
 function formula_start() {
     document.getElementById("af-value").innerHTML = document.getElementById("hidden-af-value").innerHTML;
@@ -137,3 +134,16 @@ function formula_start() {
 function deleteElement(n){
     n.parentNode.removeChild(n);
 }
+function checkURL (a) {
+    var string = a.value;
+    if ((!~string.indexOf("http"))&&(string!="")) {
+        string = "http://" + string;
+    }
+    a.value = string;
+    return a
+}
+function removeAttr() {
+    $(".edit-field-body .nav-pills a").removeAttr("href");
+    setTimeout(removeAttr, 1000);
+}
+removeAttr();
